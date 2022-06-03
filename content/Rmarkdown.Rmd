@@ -1,0 +1,23 @@
+```{r}
+library(dplyr)
+
+#create data frame
+df <- data.frame(player=c('A', 'B', 'C', 'D'),
+                 year1=c(12, 15, 19, 19),
+                 year2=c(22, 29, 18, 12));df
+##整合col两列名,放到一列里,作为变量.
+##值拿出来放到新列名的
+library(tidyr)
+df %>% pivot_longer(cols=c('year1', 'year2'),
+                    names_to='year',
+                    values_to='points')
+##练习
+iris%>% pivot_longer(cols=c('Petal.Length','Petal.Width'),
+                     names_to=c('我起的'),
+                     values_to=c('奇怪的名字'))
+
+## pivot_wider() 
+df
+df %>% pivot_wider(names_from = player,values_from = year1)
+  
+```
