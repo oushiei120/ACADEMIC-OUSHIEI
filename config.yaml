@@ -18,9 +18,9 @@ menu:
       url: /author/关于我
     - name: Rの豆知識
       url: /Rの豆知識
-    - name: experience
+    - name: Experience
       url: /experience
-    - name: publication
+    - name: Publication
       url: https://kns.cnki.net/kcms/detail/knetsearch.aspx?dbcode=CJFD&code=000044219366&sfield=au&skey=%e7%8e%8b%e5%ad%90%e7%9d%bf&uniplatform=NZKPT
     
 params:
