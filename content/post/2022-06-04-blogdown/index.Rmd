@@ -1,0 +1,20 @@
+---
+title: ちょっとだけblogdownの図insertを勉強する
+author: oushiei
+date: '2022-06-04'
+slug: blogdown
+categories:
+  - Rbolgstudy
+tags: [blogdown]
+output:
+  html_document:
+    theme: cerulean
+    highlight: style.css
+---
+
+
+我爱吃蛋炒饭
+
+```{r}
+
+```

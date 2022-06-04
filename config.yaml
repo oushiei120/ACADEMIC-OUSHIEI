@@ -1,7 +1,7 @@
 baseurl: /
 languageCode: en-us
-title: A Hugo website
-theme: edidor-main
+title: oushiei'website
+theme: simpleness-main
 googleAnalytics: ''
 disqusShortname: ''
 ignoreFiles:
@@ -14,16 +14,19 @@ permalinks:
   post: /:year/:month/:day/:slug/
 menu:
   main:
-    - name: About
-      url: /about/
-    - name: GitHub
-      url: https://github.com/rstudio/blogdown
-    - name: Twitter
-      url: https://twitter.com/rstudio
+    - name: AboutMe
+      url: /author/关于我
+    - name: Rの豆知識
+      url: /Rの豆知識
+    - name: experience
+      url: /experience
+    - name: publication
+      url: https://kns.cnki.net/kcms/detail/knetsearch.aspx?dbcode=CJFD&code=000044219366&sfield=au&skey=%e7%8e%8b%e5%ad%90%e7%9d%bf&uniplatform=NZKPT
+    
 params:
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
-  description: A website built through Hugo and blogdown.
+  description: oushiei's academic blog.
   favicon: favicon.ico
   highlightjsCDN: //cdnjs.cloudflare.com/ajax/libs
   highlightjsLang:
@@ -34,7 +37,7 @@ params:
   logo:
     alt: Logo
     height: 50
-    url: logo.png
+    url: 头像
     width: 50
 markup:
   defaultMarkdownHandler: goldmark
