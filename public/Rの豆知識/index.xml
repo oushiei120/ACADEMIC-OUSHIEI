@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rの豆知識s on oushiei&#39;website</title>
+    <link>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/</link>
+    <description>Recent content in Rの豆知識s on oushiei&#39;website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>css</title>
+      <link>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/</link>
+      <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pivot</title>
+      <link>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/pivot/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/pivot/</guid>
+      <description>knitr::opts_chunk$set(class.source = “watch-out”)
+mtcars[1:5, &amp;quot;mpg&amp;quot;, drop = FALSE] ## mpg ## Mazda RX4 21.0 ## Mazda RX4 Wag 21.0 ## Datsun 710 22.8 ## Hornet 4 Drive 21.4 ## Hornet Sportabout 18.7 我想显示的代码 library(dplyr) ## ## Attaching package: &amp;#39;dplyr&amp;#39; ## The following objects are masked from &amp;#39;package:stats&amp;#39;: ## ## filter, lag ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## intersect, setdiff, setequal, union #create data frame df &amp;lt;- data.</description>
+    </item>
+    
+  </channel>
+</rss>

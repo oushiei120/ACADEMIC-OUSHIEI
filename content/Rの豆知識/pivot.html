@@ -1,0 +1,106 @@
+---
+title: "pivot"
+author: "oushiei"
+date: '2022-06-01'
+output:
+  html_document:
+    df_print: paged
+  html_notebook:
+    html_document: null
+    theme: cerulean
+    highlight: tango
+---
+
+
+
+<style type="text/css">
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px
+}
+</style>
+<p>knitr::opts_chunk$set(class.source = “watch-out”)</p>
+<pre class="r code"><code>mtcars[1:5, &quot;mpg&quot;, drop = FALSE]</code></pre>
+<pre><code>##                    mpg
+## Mazda RX4         21.0
+## Mazda RX4 Wag     21.0
+## Datsun 710        22.8
+## Hornet 4 Drive    21.4
+## Hornet Sportabout 18.7</code></pre>
+<div id="我想显示的代码" class="section level2">
+<h2>我想显示的代码</h2>
+<pre class="r code"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r code"><code>#create data frame
+df &lt;- data.frame(player=c(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;),
+                 year1=c(12, 15, 19, 19),
+                 year2=c(22, 29, 18, 12));df</code></pre>
+<pre><code>##   player year1 year2
+## 1      A    12    22
+## 2      B    15    29
+## 3      C    19    18
+## 4      D    19    12</code></pre>
+<pre class="r code"><code>##整合col两列名,放到一列里,作为变量.
+##值拿出来放到新列名的
+library(tidyr)
+df %&gt;% pivot_longer(cols=c(&#39;year1&#39;, &#39;year2&#39;),
+                    names_to=&#39;year&#39;,
+                    values_to=&#39;points&#39;)</code></pre>
+<pre><code>## # A tibble: 8 × 3
+##   player year  points
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
+## 1 A      year1     12
+## 2 A      year2     22
+## 3 B      year1     15
+## 4 B      year2     29
+## 5 C      year1     19
+## 6 C      year2     18
+## 7 D      year1     19
+## 8 D      year2     12</code></pre>
+<pre class="r code"><code>##练习
+iris%&gt;% pivot_longer(cols=c(&#39;Petal.Length&#39;,&#39;Petal.Width&#39;),
+                     names_to=c(&#39;我起的&#39;),
+                     values_to=c(&#39;奇怪的名字&#39;))</code></pre>
+<pre><code>## # A tibble: 300 × 5
+##    Sepal.Length Sepal.Width Species 我起的       奇怪的名字
+##           &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;   &lt;chr&gt;             &lt;dbl&gt;
+##  1          5.1         3.5 setosa  Petal.Length        1.4
+##  2          5.1         3.5 setosa  Petal.Width         0.2
+##  3          4.9         3   setosa  Petal.Length        1.4
+##  4          4.9         3   setosa  Petal.Width         0.2
+##  5          4.7         3.2 setosa  Petal.Length        1.3
+##  6          4.7         3.2 setosa  Petal.Width         0.2
+##  7          4.6         3.1 setosa  Petal.Length        1.5
+##  8          4.6         3.1 setosa  Petal.Width         0.2
+##  9          5           3.6 setosa  Petal.Length        1.4
+## 10          5           3.6 setosa  Petal.Width         0.2
+## # … with 290 more rows</code></pre>
+<pre class="r code"><code>## pivot_wider() 
+df</code></pre>
+<pre><code>##   player year1 year2
+## 1      A    12    22
+## 2      B    15    29
+## 3      C    19    18
+## 4      D    19    12</code></pre>
+<pre class="r code"><code>df %&gt;% pivot_wider(names_from = player,values_from = year1)</code></pre>
+<pre><code>## # A tibble: 4 × 5
+##   year2     A     B     C     D
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1    22    12    NA    NA    NA
+## 2    29    NA    15    NA    NA
+## 3    18    NA    NA    19    NA
+## 4    12    NA    NA    NA    19</code></pre>
+<div class="footer">
+Copyright ©王子睿oushiei IN GuangXi Univisity
+</div>
+</div>
