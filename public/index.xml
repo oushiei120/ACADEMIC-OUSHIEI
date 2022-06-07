@@ -9,12 +9,22 @@
     <lastBuildDate>Tue, 07 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://oushiei.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>四字词-检索</title>
-      <link>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/</link>
+      <link>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-%E5%9B%9B%E5%AD%97%E8%AF%8D%E6%8F%90%E5%8F%96/</link>
       <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/</guid>
+      <guid>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-%E5%9B%9B%E5%AD%97%E8%AF%8D%E6%8F%90%E5%8F%96/</guid>
       <description>1.load package suppressPackageStartupMessages({ require(quanteda) library(tidytext) library(devtools) library(jiebaR) library(readtext) library(tidyverse) library(tidyr) }) 2.convert and load a user dictionary for jiebaR but actually the dictionary file which we download from sogou is not the file type jiebaR can recognize.So the cidian package is very helpful
 ##convert the scel to the &amp;quot;.dic&amp;quot; file ##library(cidian) decode_scel(scel = &amp;quot;/Users/oushiei/Downloads/【源文件】成语俗语.scel&amp;quot;) 3.Set a worker sgement,“user=”is essential my_seg &amp;lt;- worker(bylines=T,symbol = T,user = &amp;quot;/Users/oushiei/Downloads/四字词文件/【源文件】成语俗语.dict&amp;quot;)##四字词 4. read the file use readtext function and sgement r1 &amp;lt;- readtext(&amp;quot;/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部&amp;quot;) %&amp;gt;%corpus() ;r1 ## Corpus consisting of 2 documents.</description>
+    </item>
+    
+    <item>
+      <title>复习一下字符串处理</title>
+      <link>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/%E5%A4%8D%E4%B9%A0%E4%B8%80%E4%B8%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</link>
+      <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/%E5%A4%8D%E4%B9%A0%E4%B8%80%E4%B8%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</guid>
+      <description>1.strsplit()函数用法 功能:按照某一个字符字符串进行切割
+abc &amp;lt;- &amp;quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟。&amp;quot; strsplit(abc,split=&amp;quot;鸟&amp;quot;) ## [[1]] ## [1] &amp;quot;一度在日本野外灭绝的朱鹮，在日本&amp;quot; ## [2] &amp;quot;类中有着特殊地位。日本岩雷&amp;quot; ## [3] &amp;quot;也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀&amp;quot; ## [4] &amp;quot;类，朱鹮和日本岩雷&amp;quot; ## [5] &amp;quot;。&amp;quot; strsplit(abc,split=&amp;quot;。&amp;quot;) ## [[1]] ## [1] &amp;quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位&amp;quot; ## [2] &amp;quot;日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险&amp;quot; ## [3] &amp;quot;今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟&amp;quot; strsplit(abc,split=&amp;quot;，&amp;quot;) ## [[1]] ## [1] &amp;quot;一度在日本野外灭绝的朱鹮&amp;quot; ## [2] &amp;quot;在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类&amp;quot; ## [3] &amp;quot;朱鹮和日本岩雷鸟。&amp;quot; 2.regexpr()函数与gregexpr()函数 regexpr(&amp;quot;鸟&amp;quot;,abc)##匹配第一个 ## [1] 17 ## attr(,&amp;quot;match.length&amp;quot;) ## [1] 1 gregexpr(&amp;quot;鸟&amp;quot;,abc)##匹配所有出现的位置 ## [[1]] ## [1] 17 31 69 79 ## attr(,&amp;quot;match.length&amp;quot;) ## [1] 1 1 1 1 3.</description>
     </item>
     
     <item>
@@ -39,69 +49,16 @@ Today is a nice day！ 嬉しかった！</description>
     </item>
     
     <item>
-      <title>ちょっとだけblogdownの図insertを勉強する</title>
-      <link>https://oushiei.netlify.app/2022/06/04/blogdown/</link>
-      <pubDate>Sat, 04 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://oushiei.netlify.app/2022/06/04/blogdown/</guid>
-      <description>我爱吃蛋炒饭</description>
-    </item>
-    
-    <item>
-      <title>教程与学习</title>
-      <link>https://oushiei.netlify.app/2022/06/04/%E6%95%99%E7%A8%8B%E4%B8%8E%E5%AD%A6%E4%B9%A0/</link>
-      <pubDate>Sat, 04 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://oushiei.netlify.app/2022/06/04/%E6%95%99%E7%A8%8B%E4%B8%8E%E5%AD%A6%E4%B9%A0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>https://oushiei.netlify.app/2020/12/01/hello-r-markdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      
-      <guid>https://oushiei.netlify.app/2020/12/01/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-    <item>
-      <title>test1</title>
-      <link>https://oushiei.netlify.app/2020/06/04/test1/</link>
-      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://oushiei.netlify.app/2020/06/04/test1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>A Plain Markdown Post</title>
-      <link>https://oushiei.netlify.app/2016/12/30/a-plain-markdown-post/</link>
-      <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
-      
-      <guid>https://oushiei.netlify.app/2016/12/30/a-plain-markdown-post/</guid>
-      <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
-You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc. There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
-    </item>
-    
-    <item>
-      <title>Lorem Ipsum</title>
-      <link>https://oushiei.netlify.app/2015/01/01/lorem-ipsum/</link>
-      <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
-      
-      <guid>https://oushiei.netlify.app/2015/01/01/lorem-ipsum/</guid>
-      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
-    </item>
-    
-    <item>
       <title>关于</title>
       <link>https://oushiei.netlify.app/author/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://oushiei.netlify.app/author/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
-      <description>自我介绍 广西大学20级日语笔译专业在读硕士,研究方向为语料库,文本挖掘研究,对比较文学也有点点涉猎.最近喜欢敲代码,写博客.</description>
+      <description> ##自我介绍
+广西大学20级日语笔译专业在读硕士,研究方向为语料库,文本挖掘研究,对比较文学也有点点涉猎.最近喜欢敲代码,写博客
+##自己紹介
+2020年から広西大学大学院で日本語翻訳を専攻し、まもなく三年生になります。が、興味を持っているのは翻訳でなく、コーパスを構築したりコードを書いたりというようなテキストマイニングを手法とする研究が楽しみです。2022年5月からコードを公開するか人生を記録するために、ブログを書き始めています。
+友達の犬-妞妞 私の背 好きな空図(自撮り、広西大学の運動場、雨上がりの空がいいなぁ) </description>
     </item>
     
   </channel>

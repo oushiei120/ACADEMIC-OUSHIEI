@@ -1,0 +1,73 @@
+---
+title: 复习一下字符串处理
+author: Package Build
+date: '2022-06-07'
+slug: ''
+categories:
+  - R
+tags: []
+lastmod: ~
+description: ~
+enableDisqus: no
+enableMathJax: no
+toc: no
+---
+
+## 1.strsplit()函数用法
+功能:按照某一个字符字符串进行切割
+
+```{r}
+abc <- "一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟。"
+
+strsplit(abc,split="鸟")
+strsplit(abc,split="。")
+strsplit(abc,split="，")
+```
+
+## 2.regexpr()函数与gregexpr()函数
+
+
+```{r}
+regexpr("鸟",abc)##匹配第一个
+gregexpr("鸟",abc)##匹配所有出现的位置
+```
+
+## 3.substr()函数
+
+###substr(x，start，stop)函数获取子串。
+```{r}
+substr(abc,5,6)
+```
+
+## 4.paste()
+拼接函数
+
+```{r}
+v1 <- "我"
+v2 <- "是"
+v3 <- "人类"
+
+paste(v1,v2,v3,sep = "~")
+```
+### paste()在分词后的奇妙用法
+
+####导入文件
+```{r message=FALSE}
+texts = readLines("/Users/oushiei/Downloads/施蛰存/施蛰存-黄心大师.txt", encoding="UTF-8")
+```
+###做分词器
+
+```{r}
+library(jiebaR)
+分词器 <- worker(bylines = FALSE)
+
+分词结果 = segment(texts, 分词器);head(分词结果)
+class(分词结果)##字符串character
+```
+
+###用paste合并分词结果
+
+```{r include=FALSE}
+合并各行分词结果 =paste(分词结果, collapse = " ")
+##head(合并各行分词结果,1)
+```

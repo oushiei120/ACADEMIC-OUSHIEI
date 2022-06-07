@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css"> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script> <script>hljs.initHighlightingOnLoad();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.100.1" />
+  <title> 复习一下字符串处理 | oushiei&#39;website </title>
+  <meta name="description" content="oushiei&#39;s academic blog.">
+  <link rel="stylesheet" href="https://oushiei.netlify.app/css/simpleness.css">
+  <link rel="canonical" href="https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/%E5%A4%8D%E4%B9%A0%E4%B8%80%E4%B8%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">
+  <link rel="alternate" type="application/rss+xml" href="" title="oushiei&#39;website">
+  
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body class="container">
+  <nav class="navigation">
+  <div class="nav-left">
+    
+    <div class="nav-item nav-title">
+      <a href="https://oushiei.netlify.app/"> oushiei&#39;website</a>
+    </div>
+    <div class="nav-item nav-menu">
+      
+      <a href="/author/%E5%85%B3%E4%BA%8E%E6%88%91"> AboutMe</a>
+      
+      <a href="/experience"> Experience</a>
+      
+      <a href="https://kns.cnki.net/kcms/detail/knetsearch.aspx?dbcode=CJFD&amp;code=000044219366&amp;sfield=au&amp;skey=%e7%8e%8b%e5%ad%90%e7%9d%bf&amp;uniplatform=NZKPT"> Publication</a>
+      
+      <a href="/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98"> Rの豆知識</a>
+      
+    </div>
+  </div>
+  <div class="nav-item nav-right fontawesome">
+    
+    
+    
+  </div>
+</nav>
+
+  
+<article class="post">
+  <header class="post-header">
+    <h1 style="text-align: center;" >复习一下字符串处理</h1>
+    <div class="post-metadata">
+    
+      <time datetime="2022-06-07T00:00:00Z">June 07, 2022</time> &nbsp; 
+    
+    
+    
+    
+    
+    
+      <i class="fas fa-folder"></i>
+      
+      <a href="/categories/r">R</a>
+      &nbsp;
+      
+    
+    </div>
+  </header>
+
+  
+
+  <div class="post-text">
+    
+
+
+<div id="strsplit函数用法" class="section level2">
+<h2>1.strsplit()函数用法</h2>
+<p>功能:按照某一个字符字符串进行切割</p>
+<pre class="r"><code>abc &lt;- &quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟。&quot;
+
+strsplit(abc,split=&quot;鸟&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;一度在日本野外灭绝的朱鹮，在日本&quot;                                          
+## [2] &quot;类中有着特殊地位。日本岩雷&quot;                                                
+## [3] &quot;也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀&quot;
+## [4] &quot;类，朱鹮和日本岩雷&quot;                                                        
+## [5] &quot;。&quot;</code></pre>
+<pre class="r"><code>strsplit(abc,split=&quot;。&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位&quot;          
+## [2] &quot;日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险&quot;                
+## [3] &quot;今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟&quot;</code></pre>
+<pre class="r"><code>strsplit(abc,split=&quot;，&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;一度在日本野外灭绝的朱鹮&quot;                                                                                          
+## [2] &quot;在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类&quot;
+## [3] &quot;朱鹮和日本岩雷鸟。&quot;</code></pre>
+</div>
+<div id="regexpr函数与gregexpr函数" class="section level2">
+<h2>2.regexpr()函数与gregexpr()函数</h2>
+<pre class="r"><code>regexpr(&quot;鸟&quot;,abc)##匹配第一个</code></pre>
+<pre><code>## [1] 17
+## attr(,&quot;match.length&quot;)
+## [1] 1</code></pre>
+<pre class="r"><code>gregexpr(&quot;鸟&quot;,abc)##匹配所有出现的位置</code></pre>
+<pre><code>## [[1]]
+## [1] 17 31 69 79
+## attr(,&quot;match.length&quot;)
+## [1] 1 1 1 1</code></pre>
+</div>
+<div id="substr函数" class="section level2">
+<h2>3.substr()函数</h2>
+<p>###substr(x，start，stop)函数获取子串。</p>
+<pre class="r"><code>substr(abc,5,6)</code></pre>
+<pre><code>## [1] &quot;本野&quot;</code></pre>
+</div>
+<div id="paste" class="section level2">
+<h2>4.paste()</h2>
+<p>拼接函数</p>
+<pre class="r"><code>v1 &lt;- &quot;我&quot;
+v2 &lt;- &quot;是&quot;
+v3 &lt;- &quot;人类&quot;
+
+paste(v1,v2,v3,sep = &quot;~&quot;)</code></pre>
+<pre><code>## [1] &quot;我~是~人类&quot;</code></pre>
+<div id="paste在分词后的奇妙用法" class="section level3">
+<h3>paste()在分词后的奇妙用法</h3>
+<p>####导入文件</p>
+<pre class="r"><code>texts = readLines(&quot;/Users/oushiei/Downloads/施蛰存/施蛰存-黄心大师.txt&quot;, encoding=&quot;UTF-8&quot;)</code></pre>
+<pre><code>## Warning in readLines(&quot;/Users/oushiei/Downloads/施蛰存/施蛰存-黄心大师.txt&quot;, :
+## incomplete final line found on &#39;/Users/oushiei/Downloads/施蛰存/施蛰存-黄心大
+## 师.txt&#39;</code></pre>
+<p>###做分词器</p>
+<pre class="r"><code>library(jiebaR)</code></pre>
+<pre><code>## Loading required package: jiebaRD</code></pre>
+<pre class="r"><code>分词器 &lt;- worker(bylines = FALSE)
+
+分词结果 = segment(texts, 分词器);head(分词结果)</code></pre>
+<pre><code>## [1] &quot;南昌&quot; &quot;城外&quot; &quot;十里&quot; &quot;之遥&quot; &quot;官&quot;   &quot;道旁&quot;</code></pre>
+<pre class="r"><code>class(分词结果)##字符串character</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>###用paste合并分词结果</p>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    
+
+    
+
+    
+    
+  </footer>
+  
+  <div class="comments">
+  <div class="comments">
+
+
+
+</div>
+  </div>
+</article>
+
+  <div class="foot">
+  
+  
+  &copy;  - 2022 &#183;
+  <a href="/"> oushiei&#39;website </a> &#183;
+  Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
+  <a href="#"><i class="fas fa-chevron-up"></i></a>
+</div>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script> <script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>
+</body>
+  
+
+
+
+</html>

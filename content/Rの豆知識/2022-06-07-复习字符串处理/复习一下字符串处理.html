@@ -1,0 +1,86 @@
+---
+title: 复习一下字符串处理
+author: Package Build
+date: '2022-06-07'
+slug: ''
+categories:
+  - R
+tags: []
+lastmod: ~
+description: ~
+enableDisqus: no
+enableMathJax: no
+toc: no
+---
+
+
+
+<div id="strsplit函数用法" class="section level2">
+<h2>1.strsplit()函数用法</h2>
+<p>功能:按照某一个字符字符串进行切割</p>
+<pre class="r"><code>abc &lt;- &quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟。&quot;
+
+strsplit(abc,split=&quot;鸟&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;一度在日本野外灭绝的朱鹮，在日本&quot;                                          
+## [2] &quot;类中有着特殊地位。日本岩雷&quot;                                                
+## [3] &quot;也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀&quot;
+## [4] &quot;类，朱鹮和日本岩雷&quot;                                                        
+## [5] &quot;。&quot;</code></pre>
+<pre class="r"><code>strsplit(abc,split=&quot;。&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位&quot;          
+## [2] &quot;日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险&quot;                
+## [3] &quot;今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟&quot;</code></pre>
+<pre class="r"><code>strsplit(abc,split=&quot;，&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;一度在日本野外灭绝的朱鹮&quot;                                                                                          
+## [2] &quot;在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类&quot;
+## [3] &quot;朱鹮和日本岩雷鸟。&quot;</code></pre>
+</div>
+<div id="regexpr函数与gregexpr函数" class="section level2">
+<h2>2.regexpr()函数与gregexpr()函数</h2>
+<pre class="r"><code>regexpr(&quot;鸟&quot;,abc)##匹配第一个</code></pre>
+<pre><code>## [1] 17
+## attr(,&quot;match.length&quot;)
+## [1] 1</code></pre>
+<pre class="r"><code>gregexpr(&quot;鸟&quot;,abc)##匹配所有出现的位置</code></pre>
+<pre><code>## [[1]]
+## [1] 17 31 69 79
+## attr(,&quot;match.length&quot;)
+## [1] 1 1 1 1</code></pre>
+</div>
+<div id="substr函数" class="section level2">
+<h2>3.substr()函数</h2>
+<p>###substr(x，start，stop)函数获取子串。</p>
+<pre class="r"><code>substr(abc,5,6)</code></pre>
+<pre><code>## [1] &quot;本野&quot;</code></pre>
+</div>
+<div id="paste" class="section level2">
+<h2>4.paste()</h2>
+<p>拼接函数</p>
+<pre class="r"><code>v1 &lt;- &quot;我&quot;
+v2 &lt;- &quot;是&quot;
+v3 &lt;- &quot;人类&quot;
+
+paste(v1,v2,v3,sep = &quot;~&quot;)</code></pre>
+<pre><code>## [1] &quot;我~是~人类&quot;</code></pre>
+<div id="paste在分词后的奇妙用法" class="section level3">
+<h3>paste()在分词后的奇妙用法</h3>
+<p>####导入文件</p>
+<pre class="r"><code>texts = readLines(&quot;/Users/oushiei/Downloads/施蛰存/施蛰存-黄心大师.txt&quot;, encoding=&quot;UTF-8&quot;)</code></pre>
+<pre><code>## Warning in readLines(&quot;/Users/oushiei/Downloads/施蛰存/施蛰存-黄心大师.txt&quot;, :
+## incomplete final line found on &#39;/Users/oushiei/Downloads/施蛰存/施蛰存-黄心大
+## 师.txt&#39;</code></pre>
+<p>###做分词器</p>
+<pre class="r"><code>library(jiebaR)</code></pre>
+<pre><code>## Loading required package: jiebaRD</code></pre>
+<pre class="r"><code>分词器 &lt;- worker(bylines = FALSE)
+
+分词结果 = segment(texts, 分词器);head(分词结果)</code></pre>
+<pre><code>## [1] &quot;南昌&quot; &quot;城外&quot; &quot;十里&quot; &quot;之遥&quot; &quot;官&quot;   &quot;道旁&quot;</code></pre>
+<pre class="r"><code>class(分词结果)##字符串character</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>###用paste合并分词结果</p>
+</div>
+</div>

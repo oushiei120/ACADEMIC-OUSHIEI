@@ -6,16 +6,15 @@
     <description>Recent content in R on oushiei&#39;website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Dec 2020 21:13:14 -0500</lastBuildDate><atom:link href="https://oushiei.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://oushiei.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello R Markdown</title>
-      <link>https://oushiei.netlify.app/2020/12/01/hello-r-markdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      <title>复习一下字符串处理</title>
+      <link>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/%E5%A4%8D%E4%B9%A0%E4%B8%80%E4%B8%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</link>
+      <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://oushiei.netlify.app/2020/12/01/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/%E5%A4%8D%E4%B9%A0%E4%B8%80%E4%B8%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</guid>
+      <description>1.strsplit()函数用法 功能:按照某一个字符字符串进行切割
+abc &amp;lt;- &amp;quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟。&amp;quot; strsplit(abc,split=&amp;quot;鸟&amp;quot;) ## [[1]] ## [1] &amp;quot;一度在日本野外灭绝的朱鹮，在日本&amp;quot; ## [2] &amp;quot;类中有着特殊地位。日本岩雷&amp;quot; ## [3] &amp;quot;也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀&amp;quot; ## [4] &amp;quot;类，朱鹮和日本岩雷&amp;quot; ## [5] &amp;quot;。&amp;quot; strsplit(abc,split=&amp;quot;。&amp;quot;) ## [[1]] ## [1] &amp;quot;一度在日本野外灭绝的朱鹮，在日本鸟类中有着特殊地位&amp;quot; ## [2] &amp;quot;日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险&amp;quot; ## [3] &amp;quot;今天使馆君就给大家讲讲这两种日本的珍稀鸟类，朱鹮和日本岩雷鸟&amp;quot; strsplit(abc,split=&amp;quot;，&amp;quot;) ## [[1]] ## [1] &amp;quot;一度在日本野外灭绝的朱鹮&amp;quot; ## [2] &amp;quot;在日本鸟类中有着特殊地位。日本岩雷鸟也在不断地努力保护中摆脱灭绝的危险。今天使馆君就给大家讲讲这两种日本的珍稀鸟类&amp;quot; ## [3] &amp;quot;朱鹮和日本岩雷鸟。&amp;quot; 2.regexpr()函数与gregexpr()函数 regexpr(&amp;quot;鸟&amp;quot;,abc)##匹配第一个 ## [1] 17 ## attr(,&amp;quot;match.length&amp;quot;) ## [1] 1 gregexpr(&amp;quot;鸟&amp;quot;,abc)##匹配所有出现的位置 ## [[1]] ## [1] 17 31 69 79 ## attr(,&amp;quot;match.length&amp;quot;) ## [1] 1 1 1 1 3.</description>
     </item>
     
   </channel>

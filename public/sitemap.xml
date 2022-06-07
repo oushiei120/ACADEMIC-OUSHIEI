@@ -2,17 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://oushiei.netlify.app/categories/</loc>
+    <lastmod>2022-06-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://oushiei.netlify.app/</loc>
+    <lastmod>2022-06-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://oushiei.netlify.app/categories/r/</loc>
     <lastmod>2022-06-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/</loc>
     <lastmod>2022-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/</loc>
+    <loc>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-%E5%9B%9B%E5%AD%97%E8%AF%8D%E6%8F%90%E5%8F%96/</loc>
     <lastmod>2022-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://oushiei.netlify.app/categories/</loc>
-    <lastmod>2022-06-05T00:00:00+00:00</lastmod>
+    <loc>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/%E5%A4%8D%E4%B9%A0%E4%B8%80%E4%B8%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2022-06-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/</loc>
     <lastmod>2022-06-05T00:00:00+00:00</lastmod>
@@ -26,52 +32,9 @@
     <loc>https://oushiei.netlify.app/experience/2022-06-05-/</loc>
     <lastmod>2022-06-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://oushiei.netlify.app/tags/blogdown/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/post/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/categories/rbolgstudy/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
+    <loc>https://oushiei.netlify.app/author/</loc>
   </url><url>
     <loc>https://oushiei.netlify.app/tags/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/2022/06/04/blogdown/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/2022/06/04/%E6%95%99%E7%A8%8B%E4%B8%8E%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/2020/12/01/hello-r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/tags/plot/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/categories/r/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/tags/r-markdown/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/tags/regression/</loc>
-    <lastmod>2020-12-01T21:13:14-05:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/categories/test/</loc>
-    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/2020/06/04/test1/</loc>
-    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/2016/12/30/a-plain-markdown-post/</loc>
-    <lastmod>2016-12-30T21:49:57-07:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/2015/01/01/lorem-ipsum/</loc>
-    <lastmod>2015-01-01T13:09:13-06:00</lastmod>
-  </url><url>
-    <loc>https://oushiei.netlify.app/author/</loc>
   </url><url>
     <loc>https://oushiei.netlify.app/author/%E5%85%B3%E4%BA%8E%E6%88%91/</loc>
   </url><url>
