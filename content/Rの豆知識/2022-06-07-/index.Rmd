@@ -1,0 +1,112 @@
+---
+title: 四字词-检索
+author: Package Build
+date: '2022-06-07'
+slug: ''
+categories: []
+tags: []
+lastmod: ~
+description: ~
+enableDisqus: no
+enableMathJax: no
+toc: no
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T,message = FALSE,warning = FALSE)
+```
+## 1.load package
+
+```{r}
+suppressPackageStartupMessages({
+  require(quanteda)
+  library(tidytext)
+  library(devtools)
+  library(jiebaR)
+  library(readtext)
+  library(tidyverse)
+  library(tidyr)
+})
+```
+
+## 2.convert and load a user dictionary for jiebaR
+
+but actually the dictionary file which we download from sogou is not the file type jiebaR can recognize.So the cidian package is very helpful
+
+```{r eval=FALSE}
+##convert the scel to the ".dic" file
+##library(cidian)
+decode_scel(scel = "/Users/oushiei/Downloads/【源文件】成语俗语.scel")
+```
+
+## 3.Set a worker sgement,"user="is essential
+
+```{r}
+my_seg <- worker(bylines=T,symbol = T,user = "/Users/oushiei/Downloads/四字词文件/【源文件】成语俗语.dict")##四字词
+```
+
+## 4. read the file use readtext function and sgement
+
+```{r}
+r1 <- readtext("/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部") %>%corpus() ;r1
+## readtext -> tidy -> mutate 
+text_corpus_tidy <-r1 %>%
+  tidy %>% 
+  mutate(textID = row_number())
+text_corpus_tidy 
+# tokenization use jiebaR   4and more
+text_tokens <- text_corpus_tidy$text %>%
+  segment(jiebar = my_seg) %>%
+  as.tokens 
+text_tokens
+```
+
+## 5.remove everything you don't want to see
+
+```{r}
+toks <- tokens(text_tokens, remove_punct = TRUE, remove_numbers = TRUE) %>% 
+  tokens_remove(pattern = stopwords("zh_cn", source = "marimo"), min_nchar = 4,max_nchar=4,padding=F)%>% ##min_nchar = 4,max_nchar=4 四字成语,but we need further work
+  tokens_select(pattern = "^\\p{script=Hani}+$",valuetype = 'regex',verbose = quanteda_options("verbose"), padding=F)
+```
+
+## 6.convert the dictionary to a character
+
+```{r}
+## you need to make the dictionary file to a csv file .
+mywordlistcsv <- read_csv("/Users/oushiei/Downloads/四字词文件/成语.csv") %>% as.list()
+mywordlistcsvlist <- mywordlistcsv%>% unlist %>% as.character()
+```
+
+## 7.compare
+
+```{r}
+##将字符串的字符与现在的所有成语进行比较
+t1 <- tokens_select(toks,pattern = mywordlistcsvlist, selection = "keep");t1
+
+##浅看一下所有的四字格
+summary(t1)
+##token格式不可以直接输出为外部文件,所以继续导出为dfm
+pchu <- t1[1];pchu
+pzhou <- t1[2];pzhou
+##继续导出为dfm
+dfmat <- dfm(t1)
+dfmat
+##转换为dataf
+out <- convert(dfm(t1), to = "data.frame")
+my_df <- out %>% 
+  pivot_longer(cols = c(!doc_id), names_to = "tokens", values_to = "freq")
+my_df
+
+```
+
+## 8.conclusion
+
+- 1.jiebaR和quanteda包组合使用是可行的
+
+- 2.利用搜狗词库的成语词典可以精准的将成语分词并提取,再结合quanteda的select功能,以一一比对抽出所有四字词,避免了人工清洁语料的过程
+
+- 3.该词包只有4字与4字以上的成语,本研究只选取了4字,还有部分4字以上的成语未被提取,搜狗也有三字成语的词库,同理可以抽取所有三字成语.
+
+
+

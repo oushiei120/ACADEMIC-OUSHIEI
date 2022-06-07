@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="oushiei" />
+<meta name="author" content="Package Build" />
 
-<meta name="date" content="2022-06-01" />
+<meta name="date" content="2022-06-07" />
 
-<title>pivot</title>
+<title>四字词</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1501,6 +1501,8 @@ window.initializeCodeFolding = function(show) {
   // select all R code blocks
   var rCodeBlocks = $('pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.julia, pre.foldable');
   rCodeBlocks.each(function() {
+    // skip if the block has fold-none class
+    if ($(this).hasClass('fold-none')) return;
 
     // create a collapsable div to wrap the code in
     var div = $('<div class="collapse r-code-collapse"></div>');
@@ -1838,71 +1840,134 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">pivot</h1>
-<h4 class="author">oushiei</h4>
-<h4 class="date">2022-06-01</h4>
+<h1 class="title toc-ignore">四字词</h1>
+<h4 class="author">Package Build</h4>
+<h4 class="date">2022-06-07</h4>
 
 </div>
 
 
 <!-- rnb-text-begin -->
+<div id="load-package" class="section level2">
+<h2>1.load package</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<style type="text/css">
-code {
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px
-}
-</style>
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>knitr::opts_chunk$set(class.source = “watch-out”)</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXRjYXJzWzE6NSwgXCJtcGdcIiwgZHJvcCA9IEZBTFNFXVxuYGBgIn0= -->
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="st">&quot;mpg&quot;</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VwcHJlc3NQYWNrYWdlU3RhcnR1cE1lc3NhZ2VzKHtcbiAgcmVxdWlyZShxdWFudGVkYSlcbiAgbGlicmFyeSh0aWR5dGV4dClcbiAgbGlicmFyeShkZXZ0b29scylcbiAgbGlicmFyeShqaWViYVIpXG4gIGxpYnJhcnkocmVhZHRleHQpXG4gIGxpYnJhcnkodGlkeXZlcnNlKVxuICBsaWJyYXJ5KHRpZHlyKVxufSlcbmBgYCJ9 -->
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(quanteda)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(tidytext)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(devtools)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(jiebaR)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(readtext)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(tidyr)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<div id="我想显示的代码" class="section level2">
-<h2>我想显示的代码</h2>
+</div>
+<div id="convert-and-load-a-user-dictionary-for-jiebar" class="section level2">
+<h2>2.convert and load a user dictionary for jiebaR</h2>
+<p>but actually the dictionary file which we download from sogou is not
+the file type jiebaR can recognize.So the cidian package is very
+helpful</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcblxuI2NyZWF0ZSBkYXRhIGZyYW1lXG5kZiA8LSBkYXRhLmZyYW1lKHBsYXllcj1jKCdBJywgJ0InLCAnQycsICdEJyksXG4gICAgICAgICAgICAgICAgIHllYXIxPWMoMTIsIDE1LCAxOSwgMTkpLFxuICAgICAgICAgICAgICAgICB5ZWFyMj1jKDIyLCAyOSwgMTgsIDEyKSk7ZGZcbiMj5pW05ZCIY29s5Lik5YiX5ZCNLOaUvuWIsOS4gOWIl+mHjCzkvZzkuLrlj5jph48uXG4jI+WAvOaLv+WHuuadpeaUvuWIsOaWsOWIl+WQjeeahFxubGlicmFyeSh0aWR5cilcbmRmICU+JSBwaXZvdF9sb25nZXIoY29scz1jKCd5ZWFyMScsICd5ZWFyMicpLFxuICAgICAgICAgICAgICAgICAgICBuYW1lc190bz0neWVhcicsXG4gICAgICAgICAgICAgICAgICAgIHZhbHVlc190bz0ncG9pbnRzJylcbiMj57uD5LmgXG5pcmlzJT4lIHBpdm90X2xvbmdlcihjb2xzPWMoJ1BldGFsLkxlbmd0aCcsJ1BldGFsLldpZHRoJyksXG4gICAgICAgICAgICAgICAgICAgICBuYW1lc190bz1jKCfmiJHotbfnmoQnKSxcbiAgICAgICAgICAgICAgICAgICAgIHZhbHVlc190bz1jKCflpYfmgKrnmoTlkI3lrZcnKSlcblxuIyMgcGl2b3Rfd2lkZXIoKSBcbmRmXG5kZiAlPiUgcGl2b3Rfd2lkZXIobmFtZXNfZnJvbSA9IHBsYXllcix2YWx1ZXNfZnJvbSA9IHllYXIxKVxuICBcbmBgYCJ9 -->
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create data frame</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">player=</span><span class="fu">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;D&#39;</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year1=</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">19</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">year2=</span><span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">29</span>, <span class="dv">18</span>, <span class="dv">12</span>));df</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">##整合col两列名,放到一列里,作为变量.</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">##值拿出来放到新列名的</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&#39;year1&#39;</span>, <span class="st">&#39;year2&#39;</span>),</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_to=</span><span class="st">&#39;year&#39;</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_to=</span><span class="st">&#39;points&#39;</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="do">##练习</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">&#39;Petal.Length&#39;</span>,<span class="st">&#39;Petal.Width&#39;</span>),</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                     <span class="at">names_to=</span><span class="fu">c</span>(<span class="st">&#39;我起的&#39;</span>),</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values_to=</span><span class="fu">c</span>(<span class="st">&#39;奇怪的名字&#39;</span>))</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="do">## pivot_wider() </span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> player,<span class="at">values_from =</span> year1)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  </span></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjpbIiMjY29udmVydCB0aGUgc2NlbCB0byB0aGUgXCIuZGljXCIgZmlsZSIsImRlY29kZV9zY2VsKHNjZWwgPSBcIi9Vc2Vycy9vdXNoaWVpL0Rvd25sb2Fkcy/jgJDmupDmlofku7bjgJHmiJDor63kv5for60uc2NlbFwiKSJdfQ== -->
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">##convert the scel to the &quot;.dic&quot; file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">decode_scel</span>(<span class="at">scel =</span> <span class="st">&quot;/Users/oushiei/Downloads/【源文件】成语俗语.scel&quot;</span>)</span></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<div class="footer">
-Copyright ©王子睿oushiei IN GuangXi Univisity
 </div>
+<div id="set-a-worker-sgementuseris-essential" class="section level2">
+<h2>3.Set a worker sgement,“user=”is essential</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfc2VnIDwtIHdvcmtlcihieWxpbmVzPVQsc3ltYm9sID0gVCx1c2VyID0gXCIvVXNlcnMvb3VzaGllaS9Eb3dubG9hZHMv5Zub5a2X6K+N5paH5Lu2L+OAkOa6kOaWh+S7tuOAkeaIkOivreS/l+ivrS5kaWN0XCIpIyPlm5vlrZfor41cbmBgYCJ9 -->
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_seg <span class="ot">&lt;-</span> <span class="fu">worker</span>(<span class="at">bylines=</span>T,<span class="at">symbol =</span> T,<span class="at">user =</span> <span class="st">&quot;/Users/oushiei/Downloads/四字词文件/【源文件】成语俗语.dict&quot;</span>)<span class="do">##四字词</span></span></code></pre></div>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="read-the-file-use-readtext-function-and-sgement" class="section level2">
+<h2>4. read the file use readtext function and sgement</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucjEgPC0gcmVhZHRleHQoXCIvVXNlcnMvb3VzaGllaS9Eb3dubG9hZHMv57uG6Zuq5Lik6K+R5pys5a+55q+U5YiG5p6Q5Luj56CBLeaWh+aho+WQiOmbhi/nu4bpm6p0eHTkuKTpg6hcIikgJT4lY29ycHVzKCkgO3IxXG4jIyByZWFkdGV4dCAtPiB0aWR5IC0+IG11dGF0ZSBcbnRleHRfY29ycHVzX3RpZHkgPC1yMSAlPiVcbiAgdGlkeSAlPiUgXG4gIG11dGF0ZSh0ZXh0SUQgPSByb3dfbnVtYmVyKCkpXG50ZXh0X2NvcnB1c190aWR5IFxuIyB0b2tlbml6YXRpb24gdXNlIGppZWJhUiAgIDRhbmQgbW9yZVxudGV4dF90b2tlbnMgPC0gdGV4dF9jb3JwdXNfdGlkeSR0ZXh0ICU+JVxuICBzZWdtZW50KGppZWJhciA9IG15X3NlZykgJT4lXG4gIGFzLnRva2VucyBcbnRleHRfdG9rZW5zXG5gYGAifQ== -->
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">readtext</span>(<span class="st">&quot;/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部&quot;</span>) <span class="sc">%&gt;%</span><span class="fu">corpus</span>() ;r1</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## readtext -&gt; tidy -&gt; mutate </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>text_corpus_tidy <span class="ot">&lt;-</span>r1 <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">textID =</span> <span class="fu">row_number</span>())</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>text_corpus_tidy </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tokenization use jiebaR   4and more</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>text_tokens <span class="ot">&lt;-</span> text_corpus_tidy<span class="sc">$</span>text <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">segment</span>(<span class="at">jiebar =</span> my_seg) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  as.tokens </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>text_tokens</span></code></pre></div>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="remove-everything-you-dont-want-to-see" class="section level2">
+<h2>5.remove everything you don’t want to see</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudG9rcyA8LSB0b2tlbnModGV4dF90b2tlbnMsIHJlbW92ZV9wdW5jdCA9IFRSVUUsIHJlbW92ZV9udW1iZXJzID0gVFJVRSkgJT4lIFxuICB0b2tlbnNfcmVtb3ZlKHBhdHRlcm4gPSBzdG9wd29yZHMoXCJ6aF9jblwiLCBzb3VyY2UgPSBcIm1hcmltb1wiKSwgbWluX25jaGFyID0gNCxtYXhfbmNoYXI9NCxwYWRkaW5nPUYpJT4lICMjbWluX25jaGFyID0gNCxtYXhfbmNoYXI9NCDlm5vlrZfmiJDor60sYnV0IHdlIG5lZWQgZnVydGhlciB3b3JrXG4gIHRva2Vuc19zZWxlY3QocGF0dGVybiA9IFwiXlxcXFxwe3NjcmlwdD1IYW5pfSskXCIsdmFsdWV0eXBlID0gJ3JlZ2V4Jyx2ZXJib3NlID0gcXVhbnRlZGFfb3B0aW9ucyhcInZlcmJvc2VcIiksIHBhZGRpbmc9RilcbmBgYCJ9 -->
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(text_tokens, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">&quot;zh_cn&quot;</span>, <span class="at">source =</span> <span class="st">&quot;marimo&quot;</span>), <span class="at">min_nchar =</span> <span class="dv">4</span>,<span class="at">max_nchar=</span><span class="dv">4</span>,<span class="at">padding=</span>F)<span class="sc">%&gt;%</span> <span class="do">##min_nchar = 4,max_nchar=4 四字成语,but we need further work</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_select</span>(<span class="at">pattern =</span> <span class="st">&quot;^</span><span class="sc">\\</span><span class="st">p{script=Hani}+$&quot;</span>,<span class="at">valuetype =</span> <span class="st">&#39;regex&#39;</span>,<span class="at">verbose =</span> <span class="fu">quanteda_options</span>(<span class="st">&quot;verbose&quot;</span>), <span class="at">padding=</span>F)</span></code></pre></div>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="convert-the-dictionary-to-a-character" class="section level2">
+<h2>6.convert the dictionary to a character</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyMgeW91IG5lZWQgdG8gbWFrZSB0aGUgZGljdGlvbmFyeSBmaWxlIHRvIGEgY3N2IGZpbGUgLlxubXl3b3JkbGlzdGNzdiA8LSByZWFkX2NzdihcIi9Vc2Vycy9vdXNoaWVpL0Rvd25sb2Fkcy/lm5vlrZfor43mlofku7Yv5oiQ6K+tLmNzdlwiKSAlPiUgYXMubGlzdCgpXG5teXdvcmRsaXN0Y3N2bGlzdCA8LSBteXdvcmRsaXN0Y3N2JT4lIHVubGlzdCAlPiUgYXMuY2hhcmFjdGVyKClcbmBgYCJ9 -->
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## you need to make the dictionary file to a csv file .</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mywordlistcsv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;/Users/oushiei/Downloads/四字词文件/成语.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as.list</span>()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mywordlistcsvlist <span class="ot">&lt;-</span> mywordlistcsv<span class="sc">%&gt;%</span> unlist <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()</span></code></pre></div>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="compare" class="section level2">
+<h2>7.compare</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyPlsIblrZfnrKbkuLLnmoTlrZfnrKbkuI7njrDlnKjnmoTmiYDmnInmiJDor63ov5vooYzmr5TovoNcbnQxIDwtIHRva2Vuc19zZWxlY3QodG9rcyxwYXR0ZXJuID0gbXl3b3JkbGlzdGNzdmxpc3QsIHNlbGVjdGlvbiA9IFwia2VlcFwiKTt0MVxuXG4jI+a1heeci+S4gOS4i+aJgOacieeahOWbm+Wtl+agvFxuc3VtbWFyeSh0MSlcbiMjdG9rZW7moLzlvI/kuI3lj6/ku6Xnm7TmjqXovpPlh7rkuLrlpJbpg6jmlofku7Ys5omA5Lul57un57ut5a+85Ye65Li6ZGZtXG5wY2h1IDwtIHQxWzFdO3BjaHVcbnB6aG91IDwtIHQxWzJdO3B6aG91XG4jI+e7p+e7reWvvOWHuuS4umRmbVxuZGZtYXQgPC0gZGZtKHQxKVxuZGZtYXRcbiMj6L2s5o2i5Li6ZGF0YWZcbm91dCA8LSBjb252ZXJ0KGRmbSh0MSksIHRvID0gXCJkYXRhLmZyYW1lXCIpO291dFxubXlfZGYgPC0gb3V0ICU+JSBcbiAgcGl2b3RfbG9uZ2VyKGNvbHMgPSBjKCFkb2NfaWQpLCBuYW1lc190byA9IFwidG9rZW5zXCIsIHZhbHVlc190byA9IFwiZnJlcVwiKVxubXlfZGZcblxuYGBgIn0= -->
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">##将字符串的字符与现在的所有成语进行比较</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(toks,<span class="at">pattern =</span> mywordlistcsvlist, <span class="at">selection =</span> <span class="st">&quot;keep&quot;</span>);t1</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="do">##浅看一下所有的四字格</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(t1)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="do">##token格式不可以直接输出为外部文件,所以继续导出为dfm</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>pchu <span class="ot">&lt;-</span> t1[<span class="dv">1</span>];pchu</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>pzhou <span class="ot">&lt;-</span> t1[<span class="dv">2</span>];pzhou</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="do">##继续导出为dfm</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>dfmat <span class="ot">&lt;-</span> <span class="fu">dfm</span>(t1)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>dfmat</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">##转换为dataf</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">convert</span>(<span class="fu">dfm</span>(t1), <span class="at">to =</span> <span class="st">&quot;data.frame&quot;</span>);out</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> out <span class="sc">%&gt;%</span> </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="sc">!</span>doc_id), <span class="at">names_to =</span> <span class="st">&quot;tokens&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;freq&quot;</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>my_df</span></code></pre></div>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="conclusion" class="section level2">
+<h2>8.conclusion</h2>
+<p>1.jiebaR和quanteda包组合使用是可行的
+2.利用搜狗词库的成语词典可以精准的将成语分词并提取,再结合quanteda的select功能,可以一一比对抽出所有四字词,避免了人工清洁语料的过程
+3.该词包只有4字与4字以上的成语,本研究只选取了4字,还有部分4字以上的成语未被提取,搜狗也有三字成语的词库,同理可以抽取所有三字成语.</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAicGl2b3QiCmF1dGhvcjogIm91c2hpZWkiCmRhdGU6ICcyMDIyLTA2LTAxJwpvdXRwdXQ6CiAgaHRtbF9kb2N1bWVudDoKICAgIGRmX3ByaW50OiBwYWdlZAogIGh0bWxfbm90ZWJvb2s6CiAgICBodG1sX2RvY3VtZW50OiBudWxsCiAgICB0aGVtZTogY2VydWxlYW4KICAgIGhpZ2hsaWdodDogdGFuZ28KLS0tCgpgYGB7Y3NzLCBlY2hvPUZBTFNFfQpjb2RlIHsKICAgIHBhZGRpbmc6IDJweCA0cHg7CiAgICBmb250LXNpemU6IDkwJTsKICAgIGNvbG9yOiAjYzcyNTRlOwogICAgYmFja2dyb3VuZC1jb2xvcjogI2Y5ZjJmNDsKICAgIGJvcmRlci1yYWRpdXM6IDRweAp9CmBgYAprbml0cjo6b3B0c19jaHVuayRzZXQoY2xhc3Muc291cmNlID0gIndhdGNoLW91dCIpCgpgYGB7ciBkZi1kcm9wLW9rLCBjbGFzcy5zb3VyY2U9Ii5jb2RlIn0KbXRjYXJzWzE6NSwgIm1wZyIsIGRyb3AgPSBGQUxTRV0KYGBgCgoKIyMg5oiR5oOz5pi+56S655qE5Luj56CBCgpgYGB7ciBjbGFzcy5zb3VyY2U9ImNvZGUifQpsaWJyYXJ5KGRwbHlyKQoKI2NyZWF0ZSBkYXRhIGZyYW1lCmRmIDwtIGRhdGEuZnJhbWUocGxheWVyPWMoJ0EnLCAnQicsICdDJywgJ0QnKSwKICAgICAgICAgICAgICAgICB5ZWFyMT1jKDEyLCAxNSwgMTksIDE5KSwKICAgICAgICAgICAgICAgICB5ZWFyMj1jKDIyLCAyOSwgMTgsIDEyKSk7ZGYKIyPmlbTlkIhjb2zkuKTliJflkI0s5pS+5Yiw5LiA5YiX6YeMLOS9nOS4uuWPmOmHjy4KIyPlgLzmi7/lh7rmnaXmlL7liLDmlrDliJflkI3nmoQKbGlicmFyeSh0aWR5cikKZGYgJT4lIHBpdm90X2xvbmdlcihjb2xzPWMoJ3llYXIxJywgJ3llYXIyJyksCiAgICAgICAgICAgICAgICAgICAgbmFtZXNfdG89J3llYXInLAogICAgICAgICAgICAgICAgICAgIHZhbHVlc190bz0ncG9pbnRzJykKIyPnu4PkuaAKaXJpcyU+JSBwaXZvdF9sb25nZXIoY29scz1jKCdQZXRhbC5MZW5ndGgnLCdQZXRhbC5XaWR0aCcpLAogICAgICAgICAgICAgICAgICAgICBuYW1lc190bz1jKCfmiJHotbfnmoQnKSwKICAgICAgICAgICAgICAgICAgICAgdmFsdWVzX3RvPWMoJ+Wlh+aAqueahOWQjeWtlycpKQoKIyMgcGl2b3Rfd2lkZXIoKSAKZGYKZGYgJT4lIHBpdm90X3dpZGVyKG5hbWVzX2Zyb20gPSBwbGF5ZXIsdmFsdWVzX2Zyb20gPSB5ZWFyMSkKICAKYGBgCgoKCgo8ZGl2IGNsYXNzPSJmb290ZXIiPkNvcHlyaWdodCAmY29weTvnjovlrZDnnb9vdXNoaWVpIElOIEd1YW5nWGkgVW5pdmlzaXR5PC9kaXY+Cg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi5Zub5a2X6K+NIgphdXRob3I6ICJQYWNrYWdlIEJ1aWxkIgpkYXRlOiAnMjAyMi0wNi0wNycKb3V0cHV0OgogIHdvcmRfZG9jdW1lbnQ6IGRlZmF1bHQKICBodG1sX25vdGVib29rOgogICAgaHRtbF9kb2N1bWVudDogbnVsbAogICAgdGhlbWU6IGNlcnVsZWFuCiAgICBoaWdobGlnaHQ6IHRhbmdvCiAgaHRtbF9kb2N1bWVudDoKICAgIGRmX3ByaW50OiBwYWdlZApjYXRlZ29yaWVzOiBbXQp0YWdzOiBbXQpsYXN0bW9kOiBudWxsCmRlc2NyaXB0aW9uOiBudWxsCmVuYWJsZURpc3F1czogbm8KZW5hYmxlTWF0aEpheDogbm8KdG9jOiBubwpzbHVnOiAnJwotLS0KCiMjIDEubG9hZCBwYWNrYWdlCgpgYGB7cn0Kc3VwcHJlc3NQYWNrYWdlU3RhcnR1cE1lc3NhZ2VzKHsKICByZXF1aXJlKHF1YW50ZWRhKQogIGxpYnJhcnkodGlkeXRleHQpCiAgbGlicmFyeShkZXZ0b29scykKICBsaWJyYXJ5KGppZWJhUikKICBsaWJyYXJ5KHJlYWR0ZXh0KQogIGxpYnJhcnkodGlkeXZlcnNlKQogIGxpYnJhcnkodGlkeXIpCn0pCmBgYAoKIyMgMi5jb252ZXJ0IGFuZCBsb2FkIGEgdXNlciBkaWN0aW9uYXJ5IGZvciBqaWViYVIKCmJ1dCBhY3R1YWxseSB0aGUgZGljdGlvbmFyeSBmaWxlIHdoaWNoIHdlIGRvd25sb2FkIGZyb20gc29nb3UgaXMgbm90IHRoZSBmaWxlIHR5cGUgamllYmFSIGNhbiByZWNvZ25pemUuU28gdGhlIGNpZGlhbiBwYWNrYWdlIGlzIHZlcnkgaGVscGZ1bAoKYGBge3IgZXZhbD1GQUxTRX0KIyNjb252ZXJ0IHRoZSBzY2VsIHRvIHRoZSAiLmRpYyIgZmlsZQpkZWNvZGVfc2NlbChzY2VsID0gIi9Vc2Vycy9vdXNoaWVpL0Rvd25sb2Fkcy/jgJDmupDmlofku7bjgJHmiJDor63kv5for60uc2NlbCIpCmBgYAoKIyMgMy5TZXQgYSB3b3JrZXIgc2dlbWVudCwidXNlcj0iaXMgZXNzZW50aWFsCgpgYGB7cn0KbXlfc2VnIDwtIHdvcmtlcihieWxpbmVzPVQsc3ltYm9sID0gVCx1c2VyID0gIi9Vc2Vycy9vdXNoaWVpL0Rvd25sb2Fkcy/lm5vlrZfor43mlofku7Yv44CQ5rqQ5paH5Lu244CR5oiQ6K+t5L+X6K+tLmRpY3QiKSMj5Zub5a2X6K+NCmBgYAoKIyMgNC4gcmVhZCB0aGUgZmlsZSB1c2UgcmVhZHRleHQgZnVuY3Rpb24gYW5kIHNnZW1lbnQKCmBgYHtyfQpyMSA8LSByZWFkdGV4dCgiL1VzZXJzL291c2hpZWkvRG93bmxvYWRzL+e7humbquS4pOivkeacrOWvueavlOWIhuaekOS7o+eggS3mlofmoaPlkIjpm4Yv57uG6ZuqdHh05Lik6YOoIikgJT4lY29ycHVzKCkgO3IxCiMjIHJlYWR0ZXh0IC0+IHRpZHkgLT4gbXV0YXRlIAp0ZXh0X2NvcnB1c190aWR5IDwtcjEgJT4lCiAgdGlkeSAlPiUgCiAgbXV0YXRlKHRleHRJRCA9IHJvd19udW1iZXIoKSkKdGV4dF9jb3JwdXNfdGlkeSAKIyB0b2tlbml6YXRpb24gdXNlIGppZWJhUiAgIDRhbmQgbW9yZQp0ZXh0X3Rva2VucyA8LSB0ZXh0X2NvcnB1c190aWR5JHRleHQgJT4lCiAgc2VnbWVudChqaWViYXIgPSBteV9zZWcpICU+JQogIGFzLnRva2VucyAKdGV4dF90b2tlbnMKYGBgCgojIyA1LnJlbW92ZSBldmVyeXRoaW5nIHlvdSBkb24ndCB3YW50IHRvIHNlZQoKYGBge3J9CnRva3MgPC0gdG9rZW5zKHRleHRfdG9rZW5zLCByZW1vdmVfcHVuY3QgPSBUUlVFLCByZW1vdmVfbnVtYmVycyA9IFRSVUUpICU+JSAKICB0b2tlbnNfcmVtb3ZlKHBhdHRlcm4gPSBzdG9wd29yZHMoInpoX2NuIiwgc291cmNlID0gIm1hcmltbyIpLCBtaW5fbmNoYXIgPSA0LG1heF9uY2hhcj00LHBhZGRpbmc9RiklPiUgIyNtaW5fbmNoYXIgPSA0LG1heF9uY2hhcj00IOWbm+Wtl+aIkOivrSxidXQgd2UgbmVlZCBmdXJ0aGVyIHdvcmsKICB0b2tlbnNfc2VsZWN0KHBhdHRlcm4gPSAiXlxccHtzY3JpcHQ9SGFuaX0rJCIsdmFsdWV0eXBlID0gJ3JlZ2V4Jyx2ZXJib3NlID0gcXVhbnRlZGFfb3B0aW9ucygidmVyYm9zZSIpLCBwYWRkaW5nPUYpCmBgYAoKIyMgNi5jb252ZXJ0IHRoZSBkaWN0aW9uYXJ5IHRvIGEgY2hhcmFjdGVyCgpgYGB7cn0KIyMgeW91IG5lZWQgdG8gbWFrZSB0aGUgZGljdGlvbmFyeSBmaWxlIHRvIGEgY3N2IGZpbGUgLgpteXdvcmRsaXN0Y3N2IDwtIHJlYWRfY3N2KCIvVXNlcnMvb3VzaGllaS9Eb3dubG9hZHMv5Zub5a2X6K+N5paH5Lu2L+aIkOivrS5jc3YiKSAlPiUgYXMubGlzdCgpCm15d29yZGxpc3Rjc3ZsaXN0IDwtIG15d29yZGxpc3Rjc3YlPiUgdW5saXN0ICU+JSBhcy5jaGFyYWN0ZXIoKQpgYGAKCiMjIDcuY29tcGFyZQoKYGBge3J9CiMj5bCG5a2X56ym5Liy55qE5a2X56ym5LiO546w5Zyo55qE5omA5pyJ5oiQ6K+t6L+b6KGM5q+U6L6DCnQxIDwtIHRva2Vuc19zZWxlY3QodG9rcyxwYXR0ZXJuID0gbXl3b3JkbGlzdGNzdmxpc3QsIHNlbGVjdGlvbiA9ICJrZWVwIik7dDEKCiMj5rWF55yL5LiA5LiL5omA5pyJ55qE5Zub5a2X5qC8CnN1bW1hcnkodDEpCiMjdG9rZW7moLzlvI/kuI3lj6/ku6Xnm7TmjqXovpPlh7rkuLrlpJbpg6jmlofku7Ys5omA5Lul57un57ut5a+85Ye65Li6ZGZtCnBjaHUgPC0gdDFbMV07cGNodQpwemhvdSA8LSB0MVsyXTtwemhvdQojI+e7p+e7reWvvOWHuuS4umRmbQpkZm1hdCA8LSBkZm0odDEpCmRmbWF0CiMj6L2s5o2i5Li6ZGF0YWYKb3V0IDwtIGNvbnZlcnQoZGZtKHQxKSwgdG8gPSAiZGF0YS5mcmFtZSIpO291dApteV9kZiA8LSBvdXQgJT4lIAogIHBpdm90X2xvbmdlcihjb2xzID0gYyghZG9jX2lkKSwgbmFtZXNfdG8gPSAidG9rZW5zIiwgdmFsdWVzX3RvID0gImZyZXEiKQpteV9kZgoKYGBgCgojIyA4LmNvbmNsdXNpb24KCjEuamllYmFS5ZKMcXVhbnRlZGHljIXnu4TlkIjkvb/nlKjmmK/lj6/ooYznmoQgMi7liKnnlKjmkJzni5for43lupPnmoTmiJDor63or43lhbjlj6/ku6Xnsr7lh4bnmoTlsIbmiJDor63liIbor43lubbmj5Dlj5Ys5YaN57uT5ZCIcXVhbnRlZGHnmoRzZWxlY3Tlip/og70s5Y+v5Lul5LiA5LiA5q+U5a+55oq95Ye65omA5pyJ5Zub5a2X6K+NLOmBv+WFjeS6huS6uuW3pea4hea0geivreaWmeeahOi/h+eoiyAzLuivpeivjeWMheWPquaciTTlrZfkuI405a2X5Lul5LiK55qE5oiQ6K+tLOacrOeglOeptuWPqumAieWPluS6hjTlrZcs6L+Y5pyJ6YOo5YiGNOWtl+S7peS4iueahOaIkOivreacquiiq+aPkOWPlizmkJzni5fkuZ/mnInkuInlrZfmiJDor63nmoTor43lupMs5ZCM55CG5Y+v5Lul5oq95Y+W5omA5pyJ5LiJ5a2X5oiQ6K+tLgo=</div>
 
 
 
@@ -1949,7 +2014,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("pivot.Rmd");
+  window.initializeSourceEmbed("四字词.Rmarkdown");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

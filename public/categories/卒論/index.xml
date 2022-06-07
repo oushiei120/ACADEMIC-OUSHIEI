@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>卒論 on oushiei&#39;website</title>
+    <link>/categories/%E5%8D%92%E8%AB%96/</link>
+    <description>Recent content in 卒論 on oushiei&#39;website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E5%8D%92%E8%AB%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何根据词表得到corpus里所有的四字词</title>
+      <link>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/corpus/</link>
+      <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/corpus/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

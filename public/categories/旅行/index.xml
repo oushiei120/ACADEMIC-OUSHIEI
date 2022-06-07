@@ -2,28 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>旅行 on oushiei&#39;website</title>
-    <link>/categories/%E6%97%85%E8%A1%8C/</link>
+    <link>https://oushiei.netlify.app/categories/%E6%97%85%E8%A1%8C/</link>
     <description>Recent content in 旅行 on oushiei&#39;website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E6%97%85%E8%A1%8C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://oushiei.netlify.app/categories/%E6%97%85%E8%A1%8C/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>龙门水都之旅</title>
-      <link>/experience/2022-06-05-/</link>
+      <link>https://oushiei.netlify.app/experience/2022-06-05-/</link>
       <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>/experience/2022-06-05-/</guid>
-      <description>During the May 1st holiday, I went to 龙门水都 in Nanning with my friends
-今日ゴールデンウィークなので、友達と一緒に南寧市の龍門水都に行った。
-Today is a nice day！ 嬉しかった！</description>
-    </item>
-    
-    <item>
-      <title>龙门水都之旅</title>
-      <link>/experience/2022-06-04-/</link>
-      <pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/experience/2022-06-04-/</guid>
+      <guid>https://oushiei.netlify.app/experience/2022-06-05-/</guid>
       <description>During the May 1st holiday, I went to 龙门水都 in Nanning with my friends
 今日ゴールデンウィークなので、友達と一緒に南寧市の龍門水都に行った。
 Today is a nice day！ 嬉しかった！</description>

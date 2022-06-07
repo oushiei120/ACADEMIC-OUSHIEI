@@ -7,8 +7,8 @@
   <meta name="generator" content="Hugo 0.100.1" />
   <title> css | oushiei&#39;website </title>
   <meta name="description" content="oushiei&#39;s academic blog.">
-  <link rel="stylesheet" href="/css/simpleness.css">
-  <link rel="canonical" href="/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/">
+  <link rel="stylesheet" href="https://oushiei.netlify.app/css/simpleness.css">
+  <link rel="canonical" href="https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/">
   <link rel="alternate" type="application/rss+xml" href="" title="oushiei&#39;website">
   
   
@@ -20,7 +20,7 @@
   <div class="nav-left">
     
     <div class="nav-item nav-title">
-      <a href="/"> oushiei&#39;website</a>
+      <a href="https://oushiei.netlify.app/"> oushiei&#39;website</a>
     </div>
     <div class="nav-item nav-menu">
       
@@ -60,7 +60,10 @@
   
 
   <div class="post-text">
-    
+    <p>我写的博客为什么不会高亮呢
+只要添加以下代码就可以解决</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e">##&lt;link rel=&#34;stylesheet&#34; href=&#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css&#34;&gt; &lt;script src=&#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js&#34;&gt;&lt;/script&gt; &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;</span>
+</span></span></code></pre></div>
   </div>
 
   <footer class="post-footer">
@@ -83,11 +86,18 @@
 
   <div class="foot">
   
+  
   &copy;  - 2022 &#183;
   <a href="/"> oushiei&#39;website </a> &#183;
   Theme <a href="https://github.com/RainerChiang/simpleness">Simpleness</a> Powered by <a href="https://gohugo.io/">Hugo</a> &#183;
   <a href="#"><i class="fas fa-chevron-up"></i></a>
 </div>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script> <script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>
 </body>
   
 

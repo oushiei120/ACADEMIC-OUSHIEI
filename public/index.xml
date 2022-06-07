@@ -2,26 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>oushiei&#39;website</title>
-    <link>/</link>
+    <link>https://oushiei.netlify.app/</link>
     <description>Recent content on oushiei&#39;website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://oushiei.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>四字词-检索</title>
+      <link>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/</link>
+      <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/2022-06-07-/</guid>
+      <description>1.load package suppressPackageStartupMessages({ require(quanteda) library(tidytext) library(devtools) library(jiebaR) library(readtext) library(tidyverse) library(tidyr) }) 2.convert and load a user dictionary for jiebaR but actually the dictionary file which we download from sogou is not the file type jiebaR can recognize.So the cidian package is very helpful
+##convert the scel to the &amp;quot;.dic&amp;quot; file ##library(cidian) decode_scel(scel = &amp;quot;/Users/oushiei/Downloads/【源文件】成语俗语.scel&amp;quot;) 3.Set a worker sgement,“user=”is essential my_seg &amp;lt;- worker(bylines=T,symbol = T,user = &amp;quot;/Users/oushiei/Downloads/四字词文件/【源文件】成语俗语.dict&amp;quot;)##四字词 4. read the file use readtext function and sgement r1 &amp;lt;- readtext(&amp;quot;/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部&amp;quot;) %&amp;gt;%corpus() ;r1 ## Corpus consisting of 2 documents.</description>
+    </item>
+    
     <item>
       <title>css</title>
-      <link>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/</link>
+      <link>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/</link>
       <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/</guid>
-      <description></description>
+      <guid>https://oushiei.netlify.app/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/css/</guid>
+      <description>我写的博客为什么不会高亮呢 只要添加以下代码就可以解决
+##&amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css&amp;#34;&amp;gt; &amp;lt;script src=&amp;#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt; </description>
     </item>
     
     <item>
       <title>龙门水都之旅</title>
-      <link>/experience/2022-06-05-/</link>
+      <link>https://oushiei.netlify.app/experience/2022-06-05-/</link>
       <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>/experience/2022-06-05-/</guid>
+      <guid>https://oushiei.netlify.app/experience/2022-06-05-/</guid>
       <description>During the May 1st holiday, I went to 龙门水都 in Nanning with my friends
 今日ゴールデンウィークなので、友達と一緒に南寧市の龍門水都に行った。
 Today is a nice day！ 嬉しかった！</description>
@@ -29,49 +40,28 @@ Today is a nice day！ 嬉しかった！</description>
     
     <item>
       <title>ちょっとだけblogdownの図insertを勉強する</title>
-      <link>/2022/06/04/blogdown/</link>
+      <link>https://oushiei.netlify.app/2022/06/04/blogdown/</link>
       <pubDate>Sat, 04 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/06/04/blogdown/</guid>
+      <guid>https://oushiei.netlify.app/2022/06/04/blogdown/</guid>
       <description>我爱吃蛋炒饭</description>
     </item>
     
     <item>
       <title>教程与学习</title>
-      <link>/2022/06/04/%E6%95%99%E7%A8%8B%E4%B8%8E%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://oushiei.netlify.app/2022/06/04/%E6%95%99%E7%A8%8B%E4%B8%8E%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Sat, 04 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>/2022/06/04/%E6%95%99%E7%A8%8B%E4%B8%8E%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://oushiei.netlify.app/2022/06/04/%E6%95%99%E7%A8%8B%E4%B8%8E%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>pivot</title>
-      <link>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/pivot/</link>
-      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/r%E3%81%AE%E8%B1%86%E7%9F%A5%E8%AD%98/pivot/</guid>
-      <description>knitr::opts_chunk$set(class.source = “watch-out”)
-mtcars[1:5, &amp;quot;mpg&amp;quot;, drop = FALSE] ## mpg ## Mazda RX4 21.0 ## Mazda RX4 Wag 21.0 ## Datsun 710 22.8 ## Hornet 4 Drive 21.4 ## Hornet Sportabout 18.7 我想显示的代码 library(dplyr) ## ## Attaching package: &amp;#39;dplyr&amp;#39; ## The following objects are masked from &amp;#39;package:stats&amp;#39;: ## ## filter, lag ## The following objects are masked from &amp;#39;package:base&amp;#39;: ## ## intersect, setdiff, setequal, union #create data frame df &amp;lt;- data.</description>
-    </item>
-    
-    <item>
-      <title>龙门水都之旅</title>
-      <link>/experience/2022-06-04-/</link>
-      <pubDate>Wed, 04 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/experience/2022-06-04-/</guid>
-      <description>During the May 1st holiday, I went to 龙门水都 in Nanning with my friends
-今日ゴールデンウィークなので、友達と一緒に南寧市の龍門水都に行った。
-Today is a nice day！ 嬉しかった！</description>
-    </item>
-    
-    <item>
       <title>Hello R Markdown</title>
-      <link>/2020/12/01/hello-r-markdown/</link>
+      <link>https://oushiei.netlify.app/2020/12/01/hello-r-markdown/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
       
-      <guid>/2020/12/01/hello-r-markdown/</guid>
+      <guid>https://oushiei.netlify.app/2020/12/01/hello-r-markdown/</guid>
       <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
@@ -79,38 +69,38 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title>test1</title>
-      <link>/2020/06/04/test1/</link>
+      <link>https://oushiei.netlify.app/2020/06/04/test1/</link>
       <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/06/04/test1/</guid>
+      <guid>https://oushiei.netlify.app/2020/06/04/test1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A Plain Markdown Post</title>
-      <link>/2016/12/30/a-plain-markdown-post/</link>
+      <link>https://oushiei.netlify.app/2016/12/30/a-plain-markdown-post/</link>
       <pubDate>Fri, 30 Dec 2016 21:49:57 -0700</pubDate>
       
-      <guid>/2016/12/30/a-plain-markdown-post/</guid>
+      <guid>https://oushiei.netlify.app/2016/12/30/a-plain-markdown-post/</guid>
       <description>This is a post written in plain Markdown (*.md) instead of R Markdown (*.Rmd). The major differences are:
 You cannot run any R code in a plain Markdown document, whereas in an R Markdown document, you can embed R code chunks (```{r}); A plain Markdown post is rendered through Blackfriday, and an R Markdown document is compiled by rmarkdown and Pandoc. There are many differences in syntax between Blackfriday&amp;rsquo;s Markdown and Pandoc&amp;rsquo;s Markdown.</description>
     </item>
     
     <item>
       <title>Lorem Ipsum</title>
-      <link>/2015/01/01/lorem-ipsum/</link>
+      <link>https://oushiei.netlify.app/2015/01/01/lorem-ipsum/</link>
       <pubDate>Thu, 01 Jan 2015 13:09:13 -0600</pubDate>
       
-      <guid>/2015/01/01/lorem-ipsum/</guid>
+      <guid>https://oushiei.netlify.app/2015/01/01/lorem-ipsum/</guid>
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>/author/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
+      <link>https://oushiei.netlify.app/author/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/author/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
+      <guid>https://oushiei.netlify.app/author/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
       <description>自我介绍 广西大学20级日语笔译专业在读硕士,研究方向为语料库,文本挖掘研究,对比较文学也有点点涉猎.最近喜欢敲代码,写博客.</description>
     </item>
     

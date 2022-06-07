@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>test on oushiei&#39;website</title>
-    <link>/categories/test/</link>
+    <link>https://oushiei.netlify.app/categories/test/</link>
     <description>Recent content in test on oushiei&#39;website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="/categories/test/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://oushiei.netlify.app/categories/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>test1</title>
-      <link>/2020/06/04/test1/</link>
+      <link>https://oushiei.netlify.app/2020/06/04/test1/</link>
       <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/06/04/test1/</guid>
+      <guid>https://oushiei.netlify.app/2020/06/04/test1/</guid>
       <description></description>
     </item>
     
