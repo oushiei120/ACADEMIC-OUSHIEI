@@ -1,16 +1,17 @@
 ---
-title: 広西大学の景色(その二)
-author: おうしえい
+title: "広西大学の景色(その二)"
+author: "おうしえい"
 date: '2022-03-09'
-categories:
-  - 旅行
-tags:
-  - 美景
+output:
+  html_document:
+    df_print: paged
+tags: 美景
 slug: 広西大学の景色(その二)
+categories: 旅行
 ---
 
-![](/Experience/2022-06-08-/広西大学の景色(その二)_files/IMG_5656 大.jpeg)
+![](/Experience/2022-03-09-広西大学/広西大学の景色(その二)_files/IMG_5656 大.jpeg)
 
-![](/Experience/2022-06-08-/広西大学の景色(その二)_files/IMG_5653 大.jpeg)
+![](/Experience/2022-03-09-広西大学/広西大学の景色(その二)_files/IMG_5653 大.jpeg)
 
-![](/Experience/2022-06-08-/広西大学の景色(その二)_files/IMG_5657 大.jpeg)
+![](/Experience/2022-03-09-広西大学/広西大学の景色(その二)_files/IMG_5657 大.jpeg)

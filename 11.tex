@@ -1,0 +1,119 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Untitled},
+  pdfauthor={oushiei},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Untitled}
+\author{oushiei}
+\date{2022-06-08}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ux9009ux4feeux672cux8bfeux7a0bux7684ux4e2aux4ebaux9648ux8ff0}{%
+\section{选修本课程的个人陈述}\label{ux9009ux4feeux672cux8bfeux7a0bux7684ux4e2aux4ebaux9648ux8ff0}}
+
+本研究计划书基于Rmarkdown撰写,同步于我的\href{https://oushiei.netlify.app/}{个人博客}
+
+\hypertarget{ux6211ux7684ux6bd5ux4e1aux8bbaux6587}{%
+\subsection{我的毕业论文}\label{ux6211ux7684ux6bd5ux4e1aux8bbaux6587}}
+
+《Ｒによる翻訳文体研究》(中文译为:基于R的语料库翻译文体研究)
+
+\hypertarget{ux6700ux521dux7684ux8bbeux60f3}{%
+\subsubsection{最初的设想}\label{ux6700ux521dux7684ux8bbeux60f3}}
+
+Baker\href{https://www.bing.com/search?q=Corpus+Linguistics+and+Translation+Studies+\%E2\%80\%94+Implications+and+Applications\&qs=n\&form=QBRE\&sp=-1\&pq=\&sc=0-0\&sk=\&cvid=3181E4590024439A9783249BD00EBF33}{(1993)}提了出的语料库翻译学这一学科概念,使翻译学科从定性研究实现了定量研究的转变,而语料库翻译文体学是黄立波等教授基于语料库翻译学提出的新的研究范式:从''原作-译作''的双语研究模式创造性地拓宽了''译作-译作''模式的翻译文体研究。
+日本方面因为受可供对比的译本数量,版权等种种原因,语料库翻译研究并未得到长足发展。但是基于文本挖掘/语料库的研究却非常兴盛,呈现强烈的跨学科性与自然语言处理技术紧密结合的趋势,这方面的研究具体来说有作家文体研究,如\href{https://www.cis.doshisha.ac.jp/staff/jin/}{(金明哲,2010)},\href{https://cir.nii.ac.jp/crid/1390282679401094016}{(工藤彰,2010)},小说叙事构成研究\href{https://cir.nii.ac.jp/crid/1390282680082974080}{(赤石美奈,2006)},舆情研究\href{https://cir.nii.ac.jp/crid/1390285697600187520}{(打田篤彦,2019)}等等。
+这些跨学科研究的范式,以及信息技术的应用是值得学习的,所以我的毕业论文就是将这些日本的文体学技术与国内的翻译文体学理论相结合,以《春琴抄》的五个译本为例子,基于R去将五个译者的文体以统计,可视化的方式去分析,尝试摆脱一些例如wordmith等集成软件的束缚。
+
+\hypertarget{ux79d1ux7814ux8fdbux5c55}{%
+\subsubsection{科研进展}\label{ux79d1ux7814ux8fdbux5c55}}
+
+\begin{itemize}
+\tightlist
+\item
+  毕业论文顺利进行小论文已经付梓待审;
+\item
+  同时进行一项基于R的翻译文体研究,目前撰写过半,数据已经较为详实
+\item
+  与我校\href{https://fls.gxu.edu.cn/info/1064/2382.htm}{刘君老师}在进行一项基于文本挖掘的《谷崎潤一郎の計量文体研究》
+\end{itemize}
+
+\hypertarget{ux535aux58ebux7814ux7a76ux8ba1ux5212}{%
+\subsection{博士研究计划}\label{ux535aux58ebux7814ux7a76ux8ba1ux5212}}
+
+\begin{itemize}
+\item
+  继续深化对各种文本挖掘技术的学习,将其应用在数字人文研究中(包括但不限于翻译研究,文体研究),通过R,Java等制作语料分析的集成软件。
+\item
+  主持,并获得一项翻译大赛的所有译本,建设一种免去人工评价译文的框架,亦或是一种应用。大幅度降低翻译大赛评委的主观性。实现一种翻译评价模式:
+  数据辅助译本筛选,结合人的评价。
+\end{itemize}
+
+\hypertarget{ux603bux7ed3}{%
+\subsection{总结}\label{ux603bux7ed3}}
+
+将日本的计量文体学的研究方法积极引入国内,应用到技术层面比较薄弱的人文学科是具有巨大潜力与价值的。语料库语言学衍生了众多基于语料库的人文研究,这种跨学科性并不是从上到下兼容的,应该是学科间相互借鉴、影响、活用的过程,笔者也会基于这一观点继续深入学习与研究。
+
+\end{document}
