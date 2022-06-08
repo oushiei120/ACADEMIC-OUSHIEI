@@ -1,7 +1,7 @@
-baseurl: https://oushiei.netlify.app/
+baseurl: /
 languageCode: en-us
-title: oushiei'website
-theme: simpleness-main
+title: A Hugo website
+theme: hugo-lithium
 googleAnalytics: ''
 disqusShortname: ''
 ignoreFiles:
@@ -22,11 +22,10 @@ menu:
       url: /experience
     - name: Publication
       url: https://kns.cnki.net/kcms/detail/knetsearch.aspx?dbcode=CJFD&code=000044219366&sfield=au&skey=%e7%8e%8b%e5%ad%90%e7%9d%bf&uniplatform=NZKPT
-    
 params:
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
-  description: oushiei's academic blog.
+  description: A website built through Hugo and blogdown.
   favicon: favicon.ico
   highlightjsCDN: //cdnjs.cloudflare.com/ajax/libs
   highlightjsLang:
@@ -35,9 +34,9 @@ params:
   highlightjsTheme: github
   highlightjsVersion: 9.12.0
   logo:
-    alt: favicon.png
+    alt: Logo
     height: 50
-    url: favicon.png
+    url: logo.png
     width: 50
 markup:
   defaultMarkdownHandler: goldmark

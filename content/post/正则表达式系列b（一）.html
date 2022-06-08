@@ -1,0 +1,43 @@
+---
+title: "正则表达式"
+author: "oushiei"
+date: '2022-06-08'
+output:
+  beamer_presentation: default
+  slidy_presentation: default
+---
+
+
+
+<ul>
+<li></li>
+</ul>
+<div id="b-是什么-显式位置隐式位置的概念是什么" class="section level2">
+<h2><code>/b</code> 是什么? “显式位置”“隐式位置”的概念是什么?</h2>
+<blockquote>
+<p>它的前一个”显式位置”字符和后一个”显式位置”字符不全是 <code>\w</code>。(<code>\\w</code>是匹配数字,下划线,字母,汉字)</p>
+</blockquote>
+<ul>
+<li></li>
+</ul>
+<blockquote>
+<p>It’s a nice day today.</p>
+</blockquote>
+</div>
+<div id="解释-i-占一个位置t-占一个位置空格也是一个位置这些都叫显式位置-但是字符和字符之间还存在着着一个隐式位置的概念虽然看不到但是仍然存在." class="section level2">
+<h2>解释: ‘I’ 占一个位置，‘t’ 占一个位置,空格也是一个位置,这些都叫”显式位置” 但是字符和字符之间还存在着着一个”隐式位置”的概念,虽然看不到,但是仍然存在.</h2>
+<p>拿nice来举例,那么<code>/b</code>就可以想象成一个夹在空格与”n”之间的一个隐形的东西.</p>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="实际例子-bniceb-第一个后面是w-第一个w后面是空格" class="section level2">
+<h2>实际例子 <code>\bnice\b</code> 第一个,后面是/W 第一个/W,后面是空格</h2>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="匹配数字" class="section level2">
+<h2>“: 匹配数字</h2>
+<p>　　 例如要匹配一个固定格式的电话号码以0开头前4位后7位，如0737-5686123 正则:<code>^0\d\d\d-\d\d\d\d\d\d\d$</code></p>
+</div>
