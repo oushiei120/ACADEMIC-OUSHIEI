@@ -1,6 +1,7 @@
 ---
-date: "2016-05-05T21:48:51-07:00"
-title: About
+author: おうしえい  
+date: "2022-6-8"
+title: About my blog
 ---
 
-This is a "hello world" example website for the [**blogdown**](https://github.com/rstudio/blogdown) package. The theme was forked from [@jrutheiser/hugo-lithium-theme](https://github.com/jrutheiser/hugo-lithium-theme) and modified by [Yihui Xie](https://github.com/yihui/hugo-lithium).
+2020年から広西大学大学院で日本語翻訳を専攻し、まもなく三年生になります。が、興味を持っているのは翻訳でなく、コーパスを構築したりコードを書いたりというようなテキストマイニングを手法とする研究が楽しみです。2022年5月からコードを公開するか人生を記録するために、ブログを書き始めています。
