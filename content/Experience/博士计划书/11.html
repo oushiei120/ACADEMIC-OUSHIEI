@@ -3,9 +3,9 @@ title: "选修本课程的个人陈述"
 author: "oushiei"
 date: '2022-06-08'
 output:
-  html_document: default
-  word_document: default
   pdf_document: default
+  word_document: default
+  html_document: default
 ---
 
 
@@ -16,9 +16,14 @@ output:
 <div id="我的毕业论文" class="section level2">
 <h2>我的毕业论文</h2>
 <p>《Ｒによる翻訳文体研究》(中文译为:基于R的语料库翻译文体研究)</p>
-<div id="最初的设想" class="section level3">
-<h3>最初的设想</h3>
-<p>Baker<a href="https://www.bing.com/search?q=Corpus+Linguistics+and+Translation+Studies+%E2%80%94+Implications+and+Applications&amp;qs=n&amp;form=QBRE&amp;sp=-1&amp;pq=&amp;sc=0-0&amp;sk=&amp;cvid=3181E4590024439A9783249BD00EBF33">(1993)</a>提了出的语料库翻译学这一学科概念,使翻译学科从定性研究实现了定量研究的转变,而语料库翻译文体学是黄立波等教授基于语料库翻译学提出的新的研究范式:从”原作-译作”的双语研究模式创造性地拓宽了”译作-译作”模式的翻译文体研究。 日本方面因为受可供对比的译本数量,版权等种种原因,语料库翻译研究并未得到长足发展。但是基于文本挖掘/语料库的研究却非常兴盛,呈现强烈的跨学科性与自然语言处理技术紧密结合的趋势,这方面的研究具体来说有作家文体研究,如<a href="https://www.cis.doshisha.ac.jp/staff/jin/">(金明哲,2010)</a>,<a href="https://cir.nii.ac.jp/crid/1390282679401094016">(工藤彰,2010)</a>,小说叙事构成研究<a href="https://cir.nii.ac.jp/crid/1390282680082974080">(赤石美奈,2006)</a>,舆情研究<a href="https://cir.nii.ac.jp/crid/1390285697600187520">(打田篤彦,2019)</a>等等。 这些跨学科研究的范式,以及信息技术的应用是值得学习的,所以我的毕业论文就是将这些日本的文体学技术与国内的翻译文体学理论相结合,以《春琴抄》的五个译本为例子,基于R去将五个译者的文体以统计,可视化的方式去分析,尝试摆脱一些例如wordmith等集成软件的束缚。</p>
+<div id="最初的设想为什么以此为硕士论文" class="section level3">
+<h3>最初的设想(为什么以此为硕士论文)</h3>
+<p>Baker<a href="https://www.bing.com/search?q=Corpus+Linguistics+and+Translation+Studies+%E2%80%94+Implications+and+Applications&amp;qs=n&amp;form=QBRE&amp;sp=-1&amp;pq=&amp;sc=0-0&amp;sk=&amp;cvid=3181E4590024439A9783249BD00EBF33">(1993)</a>提了出的<strong>语料库翻译学</strong>这一学科概念,使翻译学科从定性研究实现了定量研究的转变,而<strong>语料库翻译文体学</strong>是黄立波等教授基于语料库翻译学提出的新的研究范式:从”原作-译作”的双语研究模式创造性地拓宽了”译作-译作”模式的翻译文体研究。</p>
+<p>日本方面因为受可供对比的译本数量,版权等种种原因,语料库翻译研究并未得到长足发展。但是基于文本挖掘、语料库的研究却非常兴盛,呈现强烈的跨学科性与自然语言处理技术紧密结合的趋势,这方面的研究具体来说有<strong>文学文体研究</strong>,如<a href="https://www.cis.doshisha.ac.jp/staff/jin/">(金明哲,2010)</a>,<a href="https://cir.nii.ac.jp/crid/1390282679401094016">(工藤彰,2010)</a>,小说叙事构成研究<a href="https://cir.nii.ac.jp/crid/1390282680082974080">(赤石美奈,2006)</a>,舆情研究<a href="https://cir.nii.ac.jp/crid/1390285697600187520">(打田篤彦,2019)</a>等等,还衍生了出不少文本挖掘集成软件,例如樋口耕一开发的<a href="https://khcoder.net/">KH Coder</a>,<a href="https://mjin.doshisha.ac.jp/MTMineR/mt.html">MTMineR</a>等等.</p>
+<blockquote>
+<p>这些跨学科研究的范式以及信息技术在人文学科的应用无疑是值得学习的</p>
+</blockquote>
+<p>所以我的毕业论文就是将这些日本的文体学技术与国内的翻译文体学理论相结合,以《春琴抄》的五个译本为例子,基于R将五个译者的文体以统计,加以可视化,尝试摆脱一些例如wordmith等集成软件的束缚。</p>
 </div>
 <div id="科研进展" class="section level3">
 <h3>科研进展</h3>
@@ -33,7 +38,7 @@ output:
 <h2>博士研究计划</h2>
 <ul>
 <li><p>继续深化对各种文本挖掘技术的学习,将其应用在数字人文研究中(包括但不限于翻译研究,文体研究),通过R,Java等制作语料分析的集成软件。</p></li>
-<li><p>主持,并获得一项翻译大赛的所有译本,建设一种免去人工评价译文的框架,亦或是一种应用。大幅度降低翻译大赛评委的主观性。实现一种翻译评价模式: 数据辅助译本筛选,结合人的评价。</p></li>
+<li><p>主持,并获得一项翻译大赛的所有译本,建设一种免去人工评价译文的翻译评价框架,在此之上尝试制作集成软件推广。大幅度降低翻译大赛评委的主观性。实现一种翻译评价模式: 数据辅助译本筛选,结合人的评价。</p></li>
 </ul>
 </div>
 <div id="总结" class="section level2">
