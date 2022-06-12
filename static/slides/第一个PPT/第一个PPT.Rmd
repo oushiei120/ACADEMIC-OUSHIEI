@@ -1,0 +1,50 @@
+---
+title: "幻灯忍者"
+subtitle: "写轮眼"
+author: "谢益辉"
+institute: "RStudio, PBC"
+date: "2016/12/12"
+output:
+  xaringan::moon_reader:
+    css: [default, zh-CN.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+##第一页
+
+* Item 1
+* Item 2
+    + Item 2a
+    + Item 2b
+  
+
+---
+
+# Slide 2
+
+This is slide 2
+
+Here is a complicated equation:
+
+$$S (ω)=1.466\, H_s^2 \,  \frac{ω_0^5}{ω^6 }  \, e^[-3^ { ω/(ω_0  )]^2}$$
+
+---
+
+# Slide 3
+
+This is slide 3
+
+--
+
+This will appear on click
+
+--
+
+<br>
+<br>
+
+This will appear on click but a bit farther away

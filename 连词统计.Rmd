@@ -1,0 +1,89 @@
+---
+title: "在R Markdown文档中使用中文"
+author:
+  - 谢益辉
+  - 邱怡轩
+  - 于淼
+documentclass: ctexart
+keywords:
+  - 中文
+  - R Markdown
+output:
+  rticles::ctex:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+---
+
+# 两个译本的连词考察研究
+
+## 加载包
+
+```{r}
+suppressPackageStartupMessages({
+  require(quanteda)
+  require(quanteda.corpora)
+  library(tidytext)
+  library(devtools)
+  library(jiebaR)
+  library(readtext)
+  library(tidyverse)
+  library(tidyr)
+})
+```
+
+## 首先读入文本
+
+```{r}
+corp1 <- readtext("/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部",docvarsfrom = "metadata") %>% corpus()## ##readtext get 5 text
+```
+
+```{r}
+docvars(corp1, "bookname") <- corp1$doc_id
+```
+
+
+## 分词,制成dfm矩阵
+
+```{r}
+qcorp_tokens <- tokens(corp1,remove_punct = T, remove_numbers = T, remove_symbols = T,remove_separators=T);qcorp_tokens
+
+dtm1 <- dfm(qcorp_tokens)
+
+dtm1
+```
+## 检索连词在其中的分类
+
+```{r}
+dict <- dictionary(
+list(承接=c('乃','就','而','便','如','则'),
+转折=c('却','而','致'),
+因果=c('因','是故','以至'),
+选择=c('或','亦','即'),
+假设=c('若','譬如'),
+比较=c('如','同','不及','不如','则'),
+递进=c('况','并','且'),
+目的=c('以','以便'))
+)
+```
+
+## 我们通过词表分类对dfm矩阵进行检索,查看这些文言连词出现了多少次.
+```{r}
+dict_dtm <- dfm_lookup(dtm, dict, exclusive=T)
+dict_dtm1 <- dict_dtm %>% convert(to=c("data.frame"))
+
+dict_dtm1
+write_csv(dict_dtm1,"/Users/oushiei/Downloads/www.csv")
+```
+
+## 对数据进行整形
+```{r}
+data2 <- read_csv("/Users/oushiei/Downloads/www.csv")
+data2
+library(dplyr)
+
+data3 <- data2 %>% transform(v1sum=v1/sum(v1), v2sum=v2/sum(v2))
+data3
+```
+
+
