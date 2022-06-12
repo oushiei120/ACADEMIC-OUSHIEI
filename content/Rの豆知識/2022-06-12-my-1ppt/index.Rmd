@@ -11,6 +11,6 @@ tags: []
 
 
 ```{r}
-knitr::include_url('https://oushiei.netlify.app/slidses/第一个PPT.html')
+knitr::include_url('https://oushiei.netlify.app/slides/第一个PPT.html')
 ```
 
