@@ -7,6 +7,10 @@ categories: []
 tags: []
 
 ---
+这是我的第一个ppt
 
-knitr::include_url('file:///Users/oushiei/Documents/base%20my%20blog/ACADEMIC-OUSHIEI/static/slides/%E7%AC%AC%E4%B8%80%E4%B8%AAPPT.html#2')
+
+```{r}
+knitr::include_url('https://oushiei.netlify.app/slidses/第一个PPT.html')
+```
 
