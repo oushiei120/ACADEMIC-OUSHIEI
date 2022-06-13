@@ -1,0 +1,23 @@
+---
+title: "复习字符串处理"
+author: "Package Build"
+date: '2022-06-13'
+slug: 复习字符串处理
+categories: []
+tags: []
+---
+
+
+knitr::include_url('https://oushiei.netlify.app/slidses/复习字符串处理(1)/复习字符串处理-1-.html')
+
+
+# 我们要解决的任务:
+
+- "我"有没有出现
+- "我"出现了几次
+- "我"在什么位置出现了
+- 删除字符串中的"我"
+- 提取"我"
+- 拼接字符串
+- 替换
+- 空格清楚

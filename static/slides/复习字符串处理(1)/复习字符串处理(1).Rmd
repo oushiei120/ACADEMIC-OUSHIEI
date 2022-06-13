@@ -1,0 +1,115 @@
+---
+title: "复习字符串处理"
+subtitle: "复习字符串处理(1)"
+author: "王子睿"
+institute: "广西大学"
+date: "2022.6.13"
+output:
+  xaringan::moon_reader:
+    css: [default, zh-CN.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+# 我们要解决的任务:
+
+- "我"有没有出现
+- "我"出现了几次
+- "我"在什么位置出现了
+- 删除字符串中的"我"
+- 提取"我"
+- 拼接字符串
+- 替换
+- 空格清楚
+
+---
+# 一个字符串
+```{r}
+library(tidyverse)
+wo ="我是上海人啊我
+    我是北京人啊我"
+```
+---
+# 字符串是否出现?
+```{r}
+str_detect(wo,"上海")
+str_detect(wo,"南京")
+```
+---
+# 字符串出现了几次?
+
+```{r}
+str_count(wo,"我")
+```
+---
+# 字符串总计有多长?
+
+```{r}
+str_length(wo)
+```
+---
+# 字符串在什么地方出现?
+
+```{r}
+str_locate(wo,"我")
+
+str_locate_all(wo,"我")
+```
+---
+# 根据字符串的内容提取信息
+
+```{r}
+str_extract(wo,"我")
+str_extract_all(wo,"我")
+s1 <- str_extract_all(wo,"我")
+#s1是一个list
+```
+---
+
+# 稍微高级一点的用法
+
+##空格转换
+
+```{r}
+str_trim(" hope  ")
+str_trim("桥下有一个 人  啊 啊   ")
+##只是删除左边或者右边的空格
+```
+---
+##删除长度大于1个空格
+
+```{r}
+str_squish(" hope  ")
+str_squish("桥下有一个 人      啊 啊   ")
+
+```
+---
+
+## 字符串的替换与删除
+
+
+```{r}
+str_replace(wo,"我","你")
+str_replace_all(wo,"我","你")
+
+str_remove(wo,"我")
+str_remove_all(wo,"我")
+```
+---
+
+## 字符串的拼接与拆分
+
+
+
+```{r}
+str_c("锄禾","日当午")
+str_c("锄禾","日当午",sep=",")
+
+
+str_split("锄禾日当午,汗滴禾下土",pattern = ",") %>% unlist()
+
+```
