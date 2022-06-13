@@ -8,7 +8,7 @@ tags: []
 ---
 
 
-knitr::include_url('https://oushiei.netlify.app/slidses/复习字符串处理(1)/复习字符串处理-1-.html')
+knitr::include_url('https://oushiei.netlify.app/slides/复习字符串处理(1)/复习字符串处理-1-.html')
 
 
 # 我们要解决的任务:
