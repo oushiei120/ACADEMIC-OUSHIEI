@@ -1,0 +1,157 @@
+---
+title: 怎么抽取文档中的"起来"
+author: Package Build
+date: '2022-06-15'
+slug: ''
+categories:
+  - R
+tags: []
+---
+
+
+
+<div id="加载所有需要的包" class="section level2">
+<h2>加载所有需要的包</h2>
+<pre class="r"><code>suppressPackageStartupMessages({
+  library(tidyverse)
+  library(tidytext)
+  library(quanteda)
+  library(stringr)
+  library(jiebaR)
+  library(readtext)
+  
+})</code></pre>
+</div>
+<div id="制作一个简单的函数去除所有不想要的东西" class="section level2">
+<h2>制作一个简单的函数,去除所有不想要的东西</h2>
+<pre class="r"><code>normalize_document &lt;- function(texts) {
+  texts %&gt;%
+    str_replace_all(&quot;\\s+&quot;, &quot;\n&quot;)
+}</code></pre>
+</div>
+<div id="用readtext读取txt-file-并且给每个文档标序号" class="section level2">
+<h2>用readtext读取txt file 并且给每个文档标序号</h2>
+<pre class="r"><code>##这里以红楼梦的后28回为例
+apple_df &lt;-
+  readtext(&quot;/Users/oushiei/Downloads/紅楼夢28回&quot;, encoding = &quot;UTF-8&quot;) %&gt;% ## 
+  mutate(doc_id = row_number()) ## 如果有多个文档的话要标注出序号
+apple_df</code></pre>
+<pre><code>## readtext object consisting of 1 document and 0 docvars.
+## # Description: df [1 × 2]
+##   doc_id text                         
+##    &lt;int&gt; &lt;chr&gt;                        
+## 1      1 &quot;\&quot;第八十一回\n\n惜昵近\&quot;...&quot;</code></pre>
+<pre class="r"><code>##制作一个分词器
+segmenter &lt;- worker(
+  bylines = F,
+  symbol = T)
+
+##定义一个函数
+word_seg_text &lt;- function(text, jiebar) {
+  segment(text, jiebar) %&gt;% # word tokenize
+    str_c(collapse = &quot; &quot;) ## concatenate word tokens into long strings
+}</code></pre>
+</div>
+<div id="用函数来处理字符串" class="section level2">
+<h2>用函数来处理字符串</h2>
+<pre class="r"><code>apple_df &lt;- apple_df %&gt;%
+  mutate(text_tag = map_chr(text, word_seg_text, segmenter))
+
+head(apple_df)</code></pre>
+<pre><code>## readtext object consisting of 1 document and 1 docvar.
+## # Description: df [1 × 3]
+##   doc_id text                          text_tag                                 
+## *  &lt;int&gt; &lt;chr&gt;                         &lt;chr&gt;                                    
+## 1      1 &quot;\&quot;第八十一回\n\n惜昵近\&quot;...&quot; &quot;第八十一回 \n \n 惜昵 近 公子 做良媒   …</code></pre>
+</div>
+<div id="设置一个正则表达式检索出所有的起来" class="section level2">
+<h2>设置一个正则表达式检索出所有的起来</h2>
+<pre class="r"><code>pattern_qilai &lt;- &quot;[^\\s]+\\s起来\\b&quot;</code></pre>
+</div>
+<div id="抽出所有起来" class="section level2">
+<h2>抽出所有”起来”</h2>
+<pre class="r"><code>apple_qilai &lt;- apple_df %&gt;%
+  select(-text) %&gt;% ## dont need original texts
+  unnest_tokens(
+    output = construction, ## name for new unit
+    input = text_tag, ## name of old unit
+    token = function(x) ## unesting function
+      str_extract_all(x, pattern = pattern_qilai)
+  )
+apple_qilai</code></pre>
+<pre><code>## readtext object consisting of 236 documents and 0 docvars.
+## # Description: df [236 × 3]
+##   doc_id construction  text     
+##    &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;    
+## 1      1 了 起来       &quot;\&quot;\&quot;...&quot;
+## 2      1 狐媚魇道 起来 &quot;\&quot;\&quot;...&quot;
+## 3      1 被关 起来     &quot;\&quot;\&quot;...&quot;
+## 4      1 宝玉 起来     &quot;\&quot;\&quot;...&quot;
+## 5      1 关了 起来     &quot;\&quot;\&quot;...&quot;
+## 6      1 着 起来       &quot;\&quot;\&quot;...&quot;
+## # … with 230 more rows</code></pre>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
+<pre class="r"><code>apple_word_freq &lt;- apple_df %&gt;%
+  select(-text) %&gt;% ## dont need original raw texts
+  unnest_tokens( ## tokenization
+    word,  ## new unit
+    text_tag,  ## old unit
+    token = function(x)  ## tokenization function
+      str_split(x, &quot;\\s+&quot;)
+  ) %&gt;%
+  filter(nzchar(word)) %&gt;% ## remove empty strings
+  count(word, sort = T);apple_word_freq </code></pre>
+<pre><code>## readtext object consisting of 23641 documents and 0 docvars.
+## # Description: df [23,641 × 3]
+##   word      n text     
+##   &lt;chr&gt; &lt;int&gt; &lt;chr&gt;    
+## 1 ，    17827 &quot;\&quot;\&quot;...&quot;
+## 2 。     6395 &quot;\&quot;\&quot;...&quot;
+## 3 了     5743 &quot;\&quot;\&quot;...&quot;
+## 4 的     3207 &quot;\&quot;\&quot;...&quot;
+## 5 ：     2996 &quot;\&quot;\&quot;...&quot;
+## 6 「     2931 &quot;\&quot;\&quot;...&quot;
+## # … with 23,635 more rows</code></pre>
+</div>
+<div id="和词频连接起来" class="section level2">
+<h2>和词频连接起来</h2>
+<pre class="r"><code>apple_qilai_freq &lt;- apple_qilai %&gt;%
+  count(construction, sort = T) %&gt;%  ## get joint frequencies
+  tidyr::separate(col = &quot;construction&quot;, ## restructure data frame
+                  into = c(&quot;w1&quot;, &quot;construction&quot;),
+                  sep = &quot;\\s&quot;) %&gt;%
+  ## identify the freq of X in X_起來
+  mutate(w1_freq = apple_word_freq$n[match(w1, apple_word_freq$word)])
+
+apple_word_freq</code></pre>
+<pre><code>## readtext object consisting of 23641 documents and 0 docvars.
+## # Description: df [23,641 × 3]
+##   word      n text     
+##   &lt;chr&gt; &lt;int&gt; &lt;chr&gt;    
+## 1 ，    17827 &quot;\&quot;\&quot;...&quot;
+## 2 。     6395 &quot;\&quot;\&quot;...&quot;
+## 3 了     5743 &quot;\&quot;\&quot;...&quot;
+## 4 的     3207 &quot;\&quot;\&quot;...&quot;
+## 5 ：     2996 &quot;\&quot;\&quot;...&quot;
+## 6 「     2931 &quot;\&quot;\&quot;...&quot;
+## # … with 23,635 more rows</code></pre>
+<pre class="r"><code>apple_qilai_freq</code></pre>
+<pre><code>## readtext object consisting of 128 documents and 2 docvars.
+## # Description: df [128 × 5]
+##   w1    construction     n w1_freq text     
+##   &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    
+## 1 了    起来            57    5743 &quot;\&quot;\&quot;...&quot;
+## 2 大哭  起来             7      60 &quot;\&quot;\&quot;...&quot;
+## 3 抓    起来             7      53 &quot;\&quot;\&quot;...&quot;
+## 4 不    起来             5     700 &quot;\&quot;\&quot;...&quot;
+## 5 宝玉  起来             4    1005 &quot;\&quot;\&quot;...&quot;
+## 6 着    起来             4    1395 &quot;\&quot;\&quot;...&quot;
+## # … with 122 more rows</code></pre>
+</div>
+<div id="最后导入我们可爱的csv文件中空白" class="section level2">
+<h2>最后导入我们可爱的csv文件中(空白)</h2>
+<pre class="r"><code>apple_qilai_freq %&gt;%
+  write_csv(&quot;/Users/oushiei/Downloads/起来.csv&quot;)</code></pre>
+</div>

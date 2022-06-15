@@ -1,0 +1,129 @@
+---
+title: 怎么抽取文档中的"起来"
+author: Package Build
+date: '2022-06-15'
+slug: ''
+categories:
+  - R
+tags: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 加载所有需要的包
+
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(tidytext)
+  library(quanteda)
+  library(stringr)
+  library(jiebaR)
+  library(readtext)
+  
+})
+```
+
+## 制作一个简单的函数,去除所有不想要的东西
+
+```{r}
+normalize_document <- function(texts) {
+  texts %>%
+    str_replace_all("\\s+", "\n")
+}
+```
+
+## 用readtext读取txt file 并且给每个文档标序号
+```{r paged.print=TRUE}
+##这里以红楼梦的后28回为例
+apple_df <-
+  readtext("/Users/oushiei/Downloads/紅楼夢28回", encoding = "UTF-8") %>% ## 
+  mutate(doc_id = row_number()) ## 如果有多个文档的话要标注出序号
+apple_df
+```
+```{r include=FALSE}
+##将制作好的函数应用到文本当中
+normalize_document(apple_df$text)
+```
+
+```{r}
+##制作一个分词器
+segmenter <- worker(
+  bylines = F,
+  symbol = T)
+
+##定义一个函数
+word_seg_text <- function(text, jiebar) {
+  segment(text, jiebar) %>% # word tokenize
+    str_c(collapse = " ") ## concatenate word tokens into long strings
+}
+```
+
+## 用函数来处理字符串
+
+```{r echo=TRUE}
+apple_df <- apple_df %>%
+  mutate(text_tag = map_chr(text, word_seg_text, segmenter))
+
+head(apple_df)
+```
+
+
+## 设置一个正则表达式检索出所有的起来
+
+```{r}
+pattern_qilai <- "[^\\s]+\\s起来\\b"
+```
+
+## 抽出所有"起来"
+
+```{r}
+apple_qilai <- apple_df %>%
+  select(-text) %>% ## dont need original texts
+  unnest_tokens(
+    output = construction, ## name for new unit
+    input = text_tag, ## name of old unit
+    token = function(x) ## unesting function
+      str_extract_all(x, pattern = pattern_qilai)
+  )
+apple_qilai
+```
+
+##
+
+```{r}
+apple_word_freq <- apple_df %>%
+  select(-text) %>% ## dont need original raw texts
+  unnest_tokens( ## tokenization
+    word,  ## new unit
+    text_tag,  ## old unit
+    token = function(x)  ## tokenization function
+      str_split(x, "\\s+")
+  ) %>%
+  filter(nzchar(word)) %>% ## remove empty strings
+  count(word, sort = T);apple_word_freq 
+```
+
+## 和词频连接起来
+
+```{r}
+apple_qilai_freq <- apple_qilai %>%
+  count(construction, sort = T) %>%  ## get joint frequencies
+  tidyr::separate(col = "construction", ## restructure data frame
+                  into = c("w1", "construction"),
+                  sep = "\\s") %>%
+  ## identify the freq of X in X_起來
+  mutate(w1_freq = apple_word_freq$n[match(w1, apple_word_freq$word)])
+
+apple_word_freq
+apple_qilai_freq
+```
+## 最后导入我们可爱的csv文件中(空白)
+
+```{r}
+apple_qilai_freq %>%
+  write_csv("/Users/oushiei/Downloads/起来.csv")
+```
+
