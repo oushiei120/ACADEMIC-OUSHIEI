@@ -1,0 +1,73 @@
+---
+title: 正则表达式(1)
+author: Package Build
+date: '2022-06-16'
+slug: 正则表达式(1)
+categories:
+  - R
+tags: []
+---
+
+>本节主要会讲零宽断言,正先行断言,负先行断言
+
+## 零宽断言
+
+```{r}
+
+library(stringi)
+library(tidyverse)
+x1 <- c("He(Tom) loves her(Marry)")
+
+ stri_extract_all(x1,regex="\\(.+?\\)") %>% unlist
+ stri_extract_all(x1,regex="\\(.+?\\)") 
+
+```
+\\表示要的是"("这个符号,并且其中出现了很多个其他的字符
+
+unlist 将其转为一个字符串
+
+## 如果我们不想要括号的话
+
+```{r}
+stri_extract_all(x1,regex="\\(.+?\\)") %>% unlist %>% str_sub(2,-2)
+```
+
+### 正先行断言 ?= 与负先行断言?!
+
+(?=)里面的都不要,只要前面的
+?!
+
+```{r}
+x2 <- c("The fat cat sat on the mat.")
+```
+
+想抽取fat前面的字符,抽取只要后面不是fat的The
+
+```{r}
+str_extract_all(x2,"(T|t)he(?=\\sfat)")
+str_extract_all(x2,"(T|t)he(?!\\sfat)")
+```
+#### 举一反三
+
+```{r}
+x3 <- c("我喜欢你啊,我不喜欢你呢")
+str_extract_all(x3,"你(?=呢)")
+str_extract_all(x3,"你(?!呢)")
+```
+#### 通常我们都是用jieba处理中文
+
+```{r}
+library(jiebaR)
+seg <- worker()
+v1 <- segment(x3,seg);v1
+class(v1)
+v2 <- paste0(v1, collapse = " ");v2
+```
+接下来我们尝试根据空格去检索你
+```{r}
+str_extract_all(v2,"你(?=\\s呢)")
+##str_extract_all(v1,"你(?=\\s呢)")##这时候检索要注意,行不通
+
+str_extract_all(v2,"你(?!\\s呢)")##检索后面不跟着呢的"你"
+```
+

@@ -1,0 +1,86 @@
+---
+title: 正则表达式(1)
+author: Package Build
+date: '2022-06-16'
+slug: 正则表达式(1)
+categories:
+  - R
+tags: []
+---
+
+
+
+<blockquote>
+<p>本节主要会讲零宽断言,正先行断言,负先行断言</p>
+</blockquote>
+<div id="零宽断言" class="section level2">
+<h2>零宽断言</h2>
+<pre class="r"><code>library(stringi)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+## ✔ readr   2.1.2     ✔ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>x1 &lt;- c(&quot;He(Tom) loves her(Marry)&quot;)
+
+ stri_extract_all(x1,regex=&quot;\\(.+?\\)&quot;) %&gt;% unlist</code></pre>
+<pre><code>## [1] &quot;(Tom)&quot;   &quot;(Marry)&quot;</code></pre>
+<pre class="r"><code> stri_extract_all(x1,regex=&quot;\\(.+?\\)&quot;) </code></pre>
+<pre><code>## [[1]]
+## [1] &quot;(Tom)&quot;   &quot;(Marry)&quot;</code></pre>
+<p>\表示要的是”(“这个符号,并且其中出现了很多个其他的字符</p>
+<p>unlist 将其转为一个字符串</p>
+</div>
+<div id="如果我们不想要括号的话" class="section level2">
+<h2>如果我们不想要括号的话</h2>
+<pre class="r"><code>stri_extract_all(x1,regex=&quot;\\(.+?\\)&quot;) %&gt;% unlist %&gt;% str_sub(2,-2)</code></pre>
+<pre><code>## [1] &quot;Tom&quot;   &quot;Marry&quot;</code></pre>
+<div id="正先行断言-与负先行断言" class="section level3">
+<h3>正先行断言 ?= 与负先行断言?!</h3>
+<p>(?=)里面的都不要,只要前面的
+?!</p>
+<pre class="r"><code>x2 &lt;- c(&quot;The fat cat sat on the mat.&quot;)</code></pre>
+<p>想抽取fat前面的字符,抽取只要后面不是fat的The</p>
+<pre class="r"><code>str_extract_all(x2,&quot;(T|t)he(?=\\sfat)&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;The&quot;</code></pre>
+<pre class="r"><code>str_extract_all(x2,&quot;(T|t)he(?!\\sfat)&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;the&quot;</code></pre>
+<div id="举一反三" class="section level4">
+<h4>举一反三</h4>
+<pre class="r"><code>x3 &lt;- c(&quot;我喜欢你啊,我不喜欢你呢&quot;)
+str_extract_all(x3,&quot;你(?=呢)&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;你&quot;</code></pre>
+<pre class="r"><code>str_extract_all(x3,&quot;你(?!呢)&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;你&quot;</code></pre>
+</div>
+<div id="通常我们都是用jieba处理中文" class="section level4">
+<h4>通常我们都是用jieba处理中文</h4>
+<pre class="r"><code>library(jiebaR)</code></pre>
+<pre><code>## Loading required package: jiebaRD</code></pre>
+<pre class="r"><code>seg &lt;- worker()
+v1 &lt;- segment(x3,seg);v1</code></pre>
+<pre><code>## [1] &quot;我&quot;   &quot;喜欢&quot; &quot;你&quot;   &quot;啊&quot;   &quot;我&quot;   &quot;不&quot;   &quot;喜欢&quot; &quot;你&quot;   &quot;呢&quot;</code></pre>
+<pre class="r"><code>class(v1)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>v2 &lt;- paste0(v1, collapse = &quot; &quot;);v2</code></pre>
+<pre><code>## [1] &quot;我 喜欢 你 啊 我 不 喜欢 你 呢&quot;</code></pre>
+<p>接下来我们尝试根据空格去检索你</p>
+<pre class="r"><code>str_extract_all(v2,&quot;你(?=\\s呢)&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;你&quot;</code></pre>
+<pre class="r"><code>##str_extract_all(v1,&quot;你(?=\\s呢)&quot;)##这时候检索要注意,行不通
+
+str_extract_all(v2,&quot;你(?!\\s呢)&quot;)##检索后面不跟着呢的&quot;你&quot;</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;你&quot;</code></pre>
+</div>
+</div>
+</div>

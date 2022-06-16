@@ -1,0 +1,26 @@
+---
+title: 正则表达式(2)
+author: oushiei
+date: '2022-06-16'
+slug: '2'
+categories:
+  - R
+tags: []
+---
+本节会讲正后发断言,负后发断言
+
+```{r message=FALSE}
+library(stringi)
+library(tidyverse)
+library(jiebaR)
+```
+
+
+```{r}
+x3 <- c("我喜欢你啊,我不喜欢你呢")
+seg <- worker()
+v1 <- segment(x3,seg)
+v2 <- paste0(v1, collapse = " ");v2
+str_extract_all(v2,"(?>=我).+?\\s")##没太搞懂
+str_extract_all(v2,"(?<!我\\s)(喜欢)")
+```

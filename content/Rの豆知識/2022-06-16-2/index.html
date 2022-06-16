@@ -1,0 +1,27 @@
+---
+title: 正则表达式(2)
+author: oushiei
+date: '2022-06-16'
+slug: '2'
+categories:
+  - R
+tags: []
+---
+
+
+
+<p>本节会讲正后发断言,负后发断言</p>
+<pre class="r"><code>library(stringi)
+library(tidyverse)
+library(jiebaR)</code></pre>
+<pre class="r"><code>x3 &lt;- c(&quot;我喜欢你啊,我不喜欢你呢&quot;)
+seg &lt;- worker()
+v1 &lt;- segment(x3,seg)
+v2 &lt;- paste0(v1, collapse = &quot; &quot;);v2</code></pre>
+<pre><code>## [1] &quot;我 喜欢 你 啊 我 不 喜欢 你 呢&quot;</code></pre>
+<pre class="r"><code>str_extract_all(v2,&quot;(?&gt;=我).+?\\s&quot;)##没太搞懂</code></pre>
+<pre><code>## [[1]]
+## character(0)</code></pre>
+<pre class="r"><code>str_extract_all(v2,&quot;(?&lt;!我\\s)(喜欢)&quot;)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;喜欢&quot;</code></pre>
