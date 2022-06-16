@@ -1,0 +1,59 @@
+---
+title: 使用jiebaR标注词性并且查看每种词的频数
+author: 王子睿
+date: '2022-06-16'
+slug: 使用jiebaR标注词性并且查看每种词的频数
+categories:
+  - R
+tags: []
+---
+
+
+
+<blockquote>
+<p>本章节我们要用readtext包结合jiebaR包对文本进行词性标注,并且计算每种词性的词频</p>
+</blockquote>
+<pre class="r"><code>##加载所有的包
+suppressPackageStartupMessages({
+library(jiebaR)
+library(readtext)
+library(tidyverse)
+library(tidytext)
+library(quanteda)
+})</code></pre>
+<div id="利用readtext包读取所有本文文件我假设要读取两个" class="section level2">
+<h2>利用readtext包读取所有本文文件(我假设要读取两个)</h2>
+<pre class="r"><code>v1 &lt;- readtext(&quot;/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部&quot;) %&gt;% corpus();v1</code></pre>
+<pre><code>## Corpus consisting of 2 documents.
+## 储元熹细雪.txt :
+## &quot; 一 “细姑娘[1]，劳驾帮个忙！” 从镜子里看到妙子从过道走进来，幸子头也不回地把自己正在擦脖子的粉扑儿递了过去，她像...&quot;
+## 
+## 周逸之细雪.txt :
+## &quot; 1 “小妹，来帮我一下。”幸子正在往脖子上敷粉，从镜中看见妙子从走廊走到自己身后，便把手中的粉刷递给她，问道：“雪子在...&quot;</code></pre>
+</div>
+<div id="设定词性赋码功能jiebarusage" class="section level2">
+<h2>设定词性赋码功能<a href="https://qinwenfeng.com/jiebaR/section-5.html#section-5.0.1">jiebaRusage</a></h2>
+<pre class="r"><code>mytag &lt;- worker(&quot;tag&quot;)</code></pre>
+</div>
+<div id="将词性赋码器映射到corpus的每条语料中" class="section level2">
+<h2>将词性赋码器映射到corpus的每条语料中</h2>
+<pre class="r"><code>v2 &lt;- v1 %&gt;% map(tagging,mytag)</code></pre>
+<pre class="r"><code>summary(v2)##我们可以看到两个文本的总词频(分词后的)</code></pre>
+<pre><code>##                Length Class  Mode     
+## 储元熹细雪.txt 204482 -none- character
+## 周逸之细雪.txt 204724 -none- character</code></pre>
+</div>
+<div id="将两条语料分开" class="section level2">
+<h2>将两条语料分开</h2>
+<pre class="r"><code>chu &lt;- v2$储元熹细雪.txt ##将某个译本提取出来
+zhou &lt;- v2$周逸之细雪.txt ##将某个译本提取出来</code></pre>
+</div>
+<div id="抽取利用summary查看总频数以连词为例" class="section level2">
+<h2>抽取,利用summary查看总频数,以连词为例</h2>
+<pre class="r"><code>n1 &lt;- names(chu) %&gt;% str_extract_all(.,pattern = &quot;c&quot;) %&gt;% unlist() %&gt;% summary();n1</code></pre>
+<pre><code>##    Length     Class      Mode 
+##      9930 character character</code></pre>
+<pre class="r"><code>n2 &lt;- names(zhou) %&gt;% str_extract_all(.,pattern = &quot;c&quot;) %&gt;% unlist() %&gt;% summary();n2</code></pre>
+<pre><code>##    Length     Class      Mode 
+##      9633 character character</code></pre>
+</div>

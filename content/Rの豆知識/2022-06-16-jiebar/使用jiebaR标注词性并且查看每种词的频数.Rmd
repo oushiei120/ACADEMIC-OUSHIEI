@@ -1,0 +1,52 @@
+---
+title: 使用jiebaR标注词性并且查看每种词的频数
+author: 王子睿
+date: '2022-06-16'
+slug: 使用jiebaR标注词性并且查看每种词的频数
+categories:
+  - R
+tags: []
+---
+
+>本章节我们要用readtext包结合jiebaR包对文本进行词性标注,并且计算每种词性的词频
+
+
+```{r}
+##加载所有的包
+suppressPackageStartupMessages({
+library(jiebaR)
+library(readtext)
+library(tidyverse)
+library(tidytext)
+library(quanteda)
+})
+```
+
+## 利用readtext包读取所有本文文件(我假设要读取两个)
+
+```{r}
+v1 <- readtext("/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部") %>% corpus();v1
+```
+## 设定词性赋码功能[jiebaRusage](https://qinwenfeng.com/jiebaR/section-5.html#section-5.0.1)
+```{r}
+mytag <- worker("tag")
+```
+## 将词性赋码器映射到corpus的每条语料中
+```{r message=FALSE}
+v2 <- v1 %>% map(tagging,mytag)
+```
+
+```{r}
+summary(v2)##我们可以看到两个文本的总词频(分词后的)
+```
+## 将两条语料分开
+```{r}
+chu <- v2$储元熹细雪.txt ##将某个译本提取出来
+zhou <- v2$周逸之细雪.txt ##将某个译本提取出来
+```
+## 抽取,利用summary查看总频数,以连词为例
+```{r}
+n1 <- names(chu) %>% str_extract_all(.,pattern = "c") %>% unlist() %>% summary();n1
+n2 <- names(zhou) %>% str_extract_all(.,pattern = "c") %>% unlist() %>% summary();n2
+```
+
