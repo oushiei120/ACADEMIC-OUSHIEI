@@ -10,7 +10,9 @@ tags: []
 
 >本章节我们要用readtext包结合jiebaR包对文本进行词性标注,并且计算每种词性的词频
 
+首先确定jieba的[词性标注规则](https://oushiei.netlify.app/rの豆知識/2022-06-16-jieba/jieba分词的词性表/)
 
+## 
 ```{r}
 ##加载所有的包
 suppressPackageStartupMessages({
@@ -48,5 +50,9 @@ zhou <- v2$周逸之细雪.txt ##将某个译本提取出来
 ```{r}
 n1 <- names(chu) %>% str_extract_all(.,pattern = "c") %>% unlist() %>% summary();n1
 n2 <- names(zhou) %>% str_extract_all(.,pattern = "c") %>% unlist() %>% summary();n2
+
 ```
+## 总结
+
+我们通过readtext包读取了文件,通过jiebaR再带的词性标注工具,对两个文件进行了词性标注,得到了该词性的频数
 

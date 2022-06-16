@@ -13,6 +13,9 @@ tags: []
 <blockquote>
 <p>本章节我们要用readtext包结合jiebaR包对文本进行词性标注,并且计算每种词性的词频</p>
 </blockquote>
+<p>首先确定jieba的<a href="https://oushiei.netlify.app/rの豆知識/2022-06-16-jieba/jieba分词的词性表/">词性标注规则</a></p>
+<div id="section" class="section level2">
+<h2></h2>
 <pre class="r"><code>##加载所有的包
 suppressPackageStartupMessages({
 library(jiebaR)
@@ -21,6 +24,7 @@ library(tidyverse)
 library(tidytext)
 library(quanteda)
 })</code></pre>
+</div>
 <div id="利用readtext包读取所有本文文件我假设要读取两个" class="section level2">
 <h2>利用readtext包读取所有本文文件(我假设要读取两个)</h2>
 <pre class="r"><code>v1 &lt;- readtext(&quot;/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/细雪txt两部&quot;) %&gt;% corpus();v1</code></pre>
@@ -56,4 +60,8 @@ zhou &lt;- v2$周逸之细雪.txt ##将某个译本提取出来</code></pre>
 <pre class="r"><code>n2 &lt;- names(zhou) %&gt;% str_extract_all(.,pattern = &quot;c&quot;) %&gt;% unlist() %&gt;% summary();n2</code></pre>
 <pre><code>##    Length     Class      Mode 
 ##      9633 character character</code></pre>
+</div>
+<div id="总结" class="section level2">
+<h2>总结</h2>
+<p>我们通过readtext包读取了文件,通过jiebaR再带的词性标注工具,对两个文件进行了词性标注,得到了该词性的频数</p>
 </div>
