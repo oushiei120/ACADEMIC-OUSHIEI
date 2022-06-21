@@ -1,0 +1,42 @@
+---
+title: 正则:如何获取文章中的所有直接引语呢
+author: Package Build
+date: '2022-06-21'
+slug: 正则:如何获取文章中的所有直接引语呢
+categories:
+  - R
+tags: []
+---
+
+## 一如既往地需要加载包
+```{r message=FALSE}
+suppressPackageStartupMessages({
+  library(quanteda)
+  library(quanteda.textstats)
+  library(jiebaR)
+  library(readtext)
+  library(purrr)
+  library(tidyverse)
+  library(tidytext)
+  library(stringr)})
+```
+## 读取文件
+```{r}
+v1 <- readtext("/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/测试/储元熹细雪")
+```
+## 利用正则表达式提取所有直接引语
+```{r}
+v2 <- str_extract_all(v1,"\\“.+?\\”") %>% unlist() %>% str_sub(2,-2) %>% tibble()
+
+nrow(v2)
+
+##利用正则表达式抽取所有直接引语,并且去掉引号,制作成1列N行的表格,norw可以看所一共有几行
+```
+## 获得直接引语的平均值
+```{r}
+z3 <- mapply(nchar,v2) %>% as_tibble() %>% colMeans();z3
+```
+## 总结
+
+利用readtext文件读取数据,利用str_extract_all来抽出,unlist, as_tibble
+用mapply和 nchar计算每行的字符数,然后用colMeans计算每列的平均值
