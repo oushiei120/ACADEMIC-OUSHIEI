@@ -1,0 +1,47 @@
+---
+title: 正则:如何获取文章中的所有直接引语呢
+author: Package Build
+date: '2022-06-21'
+slug: 正则:如何获取文章中的所有直接引语呢
+categories:
+  - R
+tags: []
+---
+
+
+
+<div id="一如既往地需要加载包" class="section level2">
+<h2>一如既往地需要加载包</h2>
+<pre class="r"><code>suppressPackageStartupMessages({
+  library(quanteda)
+  library(quanteda.textstats)
+  library(jiebaR)
+  library(readtext)
+  library(purrr)
+  library(tidyverse)
+  library(tidytext)
+  library(stringr)})</code></pre>
+</div>
+<div id="读取文件" class="section level2">
+<h2>读取文件</h2>
+<pre class="r"><code>v1 &lt;- readtext(&quot;/Users/oushiei/Downloads/细雪两译本对比分析代码-文档合集/测试/储元熹细雪&quot;)</code></pre>
+</div>
+<div id="利用正则表达式提取所有直接引语" class="section level2">
+<h2>利用正则表达式提取所有直接引语</h2>
+<pre class="r"><code>v2 &lt;- str_extract_all(v1,&quot;\\“.+?\\”&quot;) %&gt;% unlist() %&gt;% str_sub(2,-2) %&gt;% tibble()
+
+nrow(v2)</code></pre>
+<pre><code>## [1] 3604</code></pre>
+<pre class="r"><code>##利用正则表达式抽取所有直接引语,并且去掉引号,制作成1列N行的表格,norw可以看所一共有几行</code></pre>
+</div>
+<div id="获得直接引语的平均值" class="section level2">
+<h2>获得直接引语的平均值</h2>
+<pre class="r"><code>z3 &lt;- mapply(nchar,v2) %&gt;% as_tibble() %&gt;% colMeans();z3</code></pre>
+<pre><code>##        . 
+## 27.62514</code></pre>
+</div>
+<div id="总结" class="section level2">
+<h2>总结</h2>
+<p>利用readtext文件读取数据,利用str_extract_all来抽出,unlist, as_tibble
+用mapply和 nchar计算每行的字符数,然后用colMeans计算每列的平均值</p>
+</div>
