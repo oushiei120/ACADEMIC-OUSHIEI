@@ -1,0 +1,109 @@
+---
+title: 本文相似度与文档相似度
+author: oushiei
+date: '2022-06-22'
+slug: 本文相似度与文档相似度
+categories:
+  - R
+tags: []
+---
+
+
+
+<div id="similarity-and-distance-computation-between-documents-or-features" class="section level1">
+<h1>Similarity and distance computation between documents or features</h1>
+</div>
+<div id="计算文档和文档特征之间的相似度和距离" class="section level1">
+<h1>计算文档和文档特征之间的相似度和距离</h1>
+<blockquote>
+<p>These functions compute matrixes of distances and similarities between documents or features from a dfm() and return a matrix of similarities or distances in a sparse format. These methods are fast and robust because they operate directly on the sparse dfm objects. The output can easily be coerced to an ordinary matrix, a data.frame of pairwise comparisons, or a dist format.</p>
+</blockquote>
+<blockquote>
+<p>此函数从dfm（）计算文档或特征之间的距离和相似矩阵，并以稀疏格式返回相似性或距离矩阵。这些方法是快速和有效的，因为它们直接在稀疏的dfm对象上工作。可以很容易地强制输出为普通矩阵、成对比较的数据帧或dist格式。</p>
+</blockquote>
+<div id="加载包" class="section level2">
+<h2>加载包</h2>
+<pre class="r"><code>library(quanteda)
+library(readtext)
+library(tidyverse)
+library(quanteda.textstats)</code></pre>
+<pre class="r"><code># similarities for documents
+v1 &lt;- corpus_subset(data_corpus_inaugural, Year &gt; 2000) %&gt;% tokens()
+dfmat &lt;- dfm(v1)</code></pre>
+</div>
+<div id="将一个corpus变为dfm矩阵" class="section level2">
+<h2>将一个corpus变为dfm矩阵</h2>
+<pre class="r"><code>(tstat1 &lt;- textstat_simil(dfmat, method = &quot;cosine&quot;, margin = &quot;documents&quot;))</code></pre>
+<pre><code>## textstat_simil object; method = &quot;cosine&quot;
+##            2001-Bush 2005-Bush 2009-Obama 2013-Obama 2017-Trump 2021-Biden
+## 2001-Bush      1.000     0.908      0.940      0.930      0.938      0.935
+## 2005-Bush      0.908     1.000      0.939      0.917      0.912      0.878
+## 2009-Obama     0.940     0.939      1.000      0.969      0.939      0.919
+## 2013-Obama     0.930     0.917      0.969      1.000      0.923      0.899
+## 2017-Trump     0.938     0.912      0.939      0.923      1.000      0.924
+## 2021-Biden     0.935     0.878      0.919      0.899      0.924      1.000</code></pre>
+<pre class="r"><code>(tstat2 &lt;- textstat_simil(dfmat, method = &quot;cosine&quot;, margin = &quot;documents&quot;, min_simil = 0.6))</code></pre>
+<pre><code>## textstat_simil object; method = &quot;cosine&quot;
+##            2001-Bush 2005-Bush 2009-Obama 2013-Obama 2017-Trump 2021-Biden
+## 2001-Bush      1.000     0.908      0.940      0.930      0.938      0.935
+## 2005-Bush      0.908     1.000      0.939      0.917      0.912      0.878
+## 2009-Obama     0.940     0.939      1.000      0.969      0.939      0.919
+## 2013-Obama     0.930     0.917      0.969      1.000      0.923      0.899
+## 2017-Trump     0.938     0.912      0.939      0.923      1.000      0.924
+## 2021-Biden     0.935     0.878      0.919      0.899      0.924      1.000</code></pre>
+</div>
+<div id="similarities-for-for-specific-documents" class="section level2">
+<h2>similarities for for specific documents</h2>
+<pre class="r"><code>textstat_simil(dfmat, dfmat[&quot;2017-Trump&quot;, ], margin = &quot;documents&quot;)</code></pre>
+<pre><code>## textstat_simil object; method = &quot;correlation&quot;
+##            2017-Trump
+## 2001-Bush       0.936
+## 2005-Bush       0.910
+## 2009-Obama      0.937
+## 2013-Obama      0.921
+## 2017-Trump      1.000
+## 2021-Biden      0.922</code></pre>
+<pre class="r"><code>##查看特定文档和其他文档的相似度,1表示一模一样</code></pre>
+</div>
+<div id="compute-some-term-similarities-词相似" class="section level2">
+<h2>compute some term similarities 词相似</h2>
+<pre class="r"><code>tstat3 &lt;- textstat_simil(dfmat, dfmat[, c(&quot;fair&quot;, &quot;health&quot;, &quot;terror&quot;)], method = &quot;cosine&quot;,margin = &quot;features&quot;)
+
+head(as.matrix(tstat3), 10)</code></pre>
+<pre><code>##                    fair    health     terror
+## president     0.3396831 0.6240377 0.09805807
+## clinton       0.4714045 0.4330127 0.00000000
+## ,             0.6751997 0.8976891 0.44847321
+## distinguished 0.5773503 0.7071068 0.00000000
+## guests        0.5773503 0.7071068 0.00000000
+## and           0.7020989 0.9102048 0.47866621
+## my            0.2235195 0.5475087 0.09678678
+## fellow        0.4256283 0.7298004 0.14744196
+## citizens      0.7064173 0.6488857 0.07647191
+## the           0.6500649 0.9134069 0.52055695</code></pre>
+</div>
+<div id="distances-for-documents-文档间聚类" class="section level2">
+<h2>distances for documents 文档间聚类</h2>
+<pre class="r"><code>(tstat4 &lt;- textstat_dist(dfmat, margin = &quot;documents&quot;))</code></pre>
+<pre><code>## textstat_dist object; method = &quot;euclidean&quot;
+##            2001-Bush 2005-Bush 2009-Obama 2013-Obama 2017-Trump 2021-Biden
+## 2001-Bush          0       132      127.8       99.2       78.5        164
+## 2005-Bush      131.9         0      107.9      118.8      136.5        170
+## 2009-Obama     127.8       108          0       86.9      138.5        140
+## 2013-Obama      99.2       119       86.9          0      107.6        164
+## 2017-Trump      78.5       137      138.5      107.6          0        180
+## 2021-Biden     164.1       170      139.7      164.4      180.4          0</code></pre>
+</div>
+<div id="distances-for-specific-documents" class="section level2">
+<h2>distances for specific documents</h2>
+<pre class="r"><code>textstat_dist(dfmat, dfmat[&quot;2017-Trump&quot;, ], margin = &quot;documents&quot;)</code></pre>
+<pre><code>## textstat_dist object; method = &quot;euclidean&quot;
+##            2017-Trump
+## 2001-Bush        78.5
+## 2005-Bush       136.5
+## 2009-Obama      138.5
+## 2013-Obama      107.6
+## 2017-Trump          0
+## 2021-Biden      180.4</code></pre>
+</div>
+</div>
