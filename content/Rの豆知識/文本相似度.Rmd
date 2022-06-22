@@ -1,10 +1,10 @@
 ---
-title: 本文相似度与文档相似度
+title: 文本相似度
 author: oushiei
 date: '2022-06-22'
-categories:
-  - R
-slug: 本文相似度与文档相似度
+slug: 文本相似度
+categories: []
+tags: []
 ---
 # Similarity and distance computation between documents or features
 
