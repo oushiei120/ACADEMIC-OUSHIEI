@@ -1,0 +1,9 @@
+---
+title: 金明哲老师书第四章(1)
+author: oushiei
+date: '2022-06-23'
+slug: 金明哲老师书第四章(1)
+categories:
+  - R
+tags: []
+---
