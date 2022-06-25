@@ -1,0 +1,67 @@
+---
+title: 学习docvars的含义
+author: oushiei
+date: '2022-06-25'
+slug: 学习docvars的含义
+categories:
+  - R
+tags: []
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 学习docvars的含义
+
+## 1.导入文档
+
+```{r}
+library(quanteda)
+head(docvars(data_corpus_inaugural))
+```
+
+## 2.查看导入的copus
+
+```{r}
+tail(docvars(data_corpus_inaugural, "President"), 10)## 查看侯十个president变量
+head(data_corpus_inaugural$President)##查看前面的
+```
+
+## 3.按照文档个数增加一个连续变量
+
+```{r}
+corp <- data_corpus_inaugural
+docvars(corp, "President") <- paste("prez", 1:ndoc(corp), sep = "")
+
+```
+
+## 4.还可以通过\$来增加新的变量
+
+```{r}
+corp$fullname <- paste(data_corpus_inaugural$FirstName,
+                       data_corpus_inaugural$President)
+docvars(corp)
+```
+
+## 5.通过foor函数将年代变为世纪
+
+```{r}
+data_corpus_inaugural$Year
+data_corpus_inaugural$century <- floor(data_corpus_inaugural$Year / 100)
+data_corpus_inaugural$century
+```
+
+## 6.通过corpus_subset函数限定范围
+
+```{r}
+toks <- tokens(corpus_subset(data_corpus_inaugural, Year <= 1805))
+toks$Year
+toks$Year <- 1991:1995
+toks$Year
+toks$nonexistent <- TRUE
+
+docvars(toks)
+```
+
+## 
