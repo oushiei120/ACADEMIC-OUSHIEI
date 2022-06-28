@@ -1,0 +1,35 @@
+---
+title: 正则表达式(3)
+author: oushiei
+date: '2022-06-27'
+slug: 正则表达式(3)
+categories:
+  - R
+tags: []
+---
+
+```{r message=FALSE}
+library(tidyverse)
+library(stringi)
+x1 <- c("今天 天气 真的 不错")##假设这个是分词后的结果
+```
+
+```{r}
+str_extract_all(x1,"[^\\s]+\\s真的\\b") %>% unlist
+str_extract_all(x1,"真的\\s[^\\s]+\\b") %>% unlist
+
+
+str_extract_all(x1,"") %>% unlist
+```
+
+## 一些基础知识
+
+-  happ+y  表示前面的一个p出现一次或者多次,happppppy也可以
+
+-  happ*y  表示可以不出现,或者出现多次
+
+-  happ?y  表示前面的p只能出现一次或者0次
+
+-  [^]表示不接受里面的所有东西
+
+

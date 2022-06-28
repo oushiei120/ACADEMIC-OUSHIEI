@@ -1,0 +1,20 @@
+
+
+<pre class="r"><code>library(tidyverse)
+library(stringi)
+x1 &lt;- c(&quot;今天 天气 真的 不错&quot;)##假设这个是分词后的结果</code></pre>
+<pre class="r"><code>str_extract_all(x1,&quot;[^\\s]+\\s真的\\b&quot;) %&gt;% unlist</code></pre>
+<pre><code>## [1] &quot;天气 真的&quot;</code></pre>
+<pre class="r"><code>str_extract_all(x1,&quot;真的\\s[^\\s]+\\b&quot;) %&gt;% unlist</code></pre>
+<pre><code>## [1] &quot;真的 不错&quot;</code></pre>
+<pre class="r"><code>str_extract_all(x1,&quot;&quot;) %&gt;% unlist</code></pre>
+<pre><code>##  [1] &quot;今&quot; &quot;天&quot; &quot; &quot;  &quot;天&quot; &quot;气&quot; &quot; &quot;  &quot;真&quot; &quot;的&quot; &quot; &quot;  &quot;不&quot; &quot;错&quot;</code></pre>
+<div id="一些基础知识" class="section level2">
+<h2>一些基础知识</h2>
+<ul>
+<li><p>happ+y 表示前面的一个p出现一次或者多次,happppppy也可以</p></li>
+<li><p>happ*y 表示可以不出现,或者出现多次</p></li>
+<li><p>happ?y 表示前面的p只能出现一次或者0次</p></li>
+<li><p>[^]表示不接受里面的所有东西</p></li>
+</ul>
+</div>

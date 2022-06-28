@@ -1,0 +1,94 @@
+---
+title: "echarts4r包学习(1)"
+author: "oushiei"
+date: '2022-06-27'
+output: pdf_document
+categories: R
+tags: []
+slug: echarts4r包学习(1)
+---
+
+## 加载包,并创建dataframe
+
+```{r}
+library(echarts4r)
+```
+
+```{r}
+data1 <- data.frame(
+  作家=paste0("第",c(1:10),"位"),
+  作品数=sample(1:100,5),
+  评价=sample(1:200,20)
+)
+data1
+```
+
+# 基础柱状图
+
+## 做一个最简单的柱状图并且调整x轴
+
+```{r}
+e_charts(data1, 作家) |> # 横轴
+  e_bar(作品数) |># 纵轴
+  e_bar(评价)|> # 纵轴
+  e_x_axis(
+    axisLabel = list(interval = 0, rotate = 30),##遇上横轴的坐标轴标签显示不全的情况
+    name = "X轴", # 坐标轴标题
+    nameLocation = "center", # 横坐标轴标题的位置
+    nameGap = 30
+  ) # 坐标轴标题与坐标轴之间的距离
+
+```
+
+## 调整y轴坐标等参数
+
+```{r}
+
+e_charts(data1, 作家) |> # 横轴
+  e_bar(作品数) |># 纵轴
+  e_bar(评价)|> # 纵轴 
+  e_y_axis(
+  min = 0, # 最小值
+max = 200, # 最大值
+interval = 50, # 显示间隔
+name = "Y轴", # 坐标轴名称
+formatter = "{value} 篇"
+) # 坐标轴标签的格式化文本
+```
+
+# 双y轴(有时候我们的变量差距太大怎么办)
+
+## 修改y_index为0 或者1
+
+```{r}
+
+data1 |>
+  e_charts(作家) |> # 横轴
+  e_bar(作品数, y_index = 0) |> # 指定主轴变量
+  e_bar(评价, y_index = 1) |> # 指定副轴变量
+  e_y_axis(
+    y_index = 0, # 修改主Y轴属性
+    min = 0,
+    max = 100,
+    interval = 20,
+    name = "主Y轴",
+    formatter = "{value} 本"
+  ) |>
+  e_y_axis(
+    index = 1, # 修改副Y轴属性
+    min = 0,
+    max = 200,
+    interval = 20,
+    name = "副Y轴",
+    formatter = "{value}个"
+  )
+```
+
+# 堆积图
+
+```{r}
+data1 |>
+  e_charts(作家) |>
+  e_bar(作品数, stack = "group1") |> # 堆第一堆
+  e_bar(评价, stack = "group1")  # 堆第一堆
+```

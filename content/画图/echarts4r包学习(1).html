@@ -1,0 +1,107 @@
+<script src="echarts4r包学习(1)_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="echarts4r包学习(1)_files/echarts4r/echarts-en.min.js"></script>
+<script src="echarts4r包学习(1)_files/echarts4r/ecStat.min.js"></script>
+<script src="echarts4r包学习(1)_files/echarts4r/dataTool.min.js"></script>
+<script src="echarts4r包学习(1)_files/echarts4r-binding/echarts4r.js"></script>
+
+
+<div id="加载包并创建dataframe" class="section level2">
+<h2>加载包,并创建dataframe</h2>
+<pre class="r"><code>library(echarts4r)</code></pre>
+<pre class="r"><code>data1 &lt;- data.frame(
+  作家=paste0(&quot;第&quot;,c(1:10),&quot;位&quot;),
+  作品数=sample(1:100,5),
+  评价=sample(1:200,20)
+)
+data1</code></pre>
+<pre><code>##      作家 作品数 评价
+## 1   第1位     56   31
+## 2   第2位     62   56
+## 3   第3位     92  186
+## 4   第4位     59   13
+## 5   第5位     31  144
+## 6   第6位     56   62
+## 7   第7位     62   87
+## 8   第8位     92   78
+## 9   第9位     59    3
+## 10 第10位     31  100
+## 11  第1位     56   86
+## 12  第2位     62   97
+## 13  第3位     92  172
+## 14  第4位     59   96
+## 15  第5位     31  138
+## 16  第6位     56   32
+## 17  第7位     62  190
+## 18  第8位     92  147
+## 19  第9位     59   43
+## 20 第10位     31   27</code></pre>
+</div>
+<div id="基础柱状图" class="section level1">
+<h1>基础柱状图</h1>
+<div id="做一个最简单的柱状图并且调整x轴" class="section level2">
+<h2>做一个最简单的柱状图并且调整x轴</h2>
+<pre class="r"><code>e_charts(data1, 作家) |&gt; # 横轴
+  e_bar(作品数) |&gt;# 纵轴
+  e_bar(评价)|&gt; # 纵轴
+  e_x_axis(
+    axisLabel = list(interval = 0, rotate = 30),##遇上横轴的坐标轴标签显示不全的情况
+    name = &quot;X轴&quot;, # 坐标轴标题
+    nameLocation = &quot;center&quot;, # 横坐标轴标题的位置
+    nameGap = 30
+  ) # 坐标轴标题与坐标轴之间的距离</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:500px;" class="echarts4r html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["第1位","第2位","第3位","第4位","第5位","第6位","第7位","第8位","第9位","第10位"],"type":"category","boundaryGap":true,"axisLabel":{"interval":0,"rotate":30},"name":"X轴","nameLocation":"center","nameGap":30}],"legend":{"data":["作品数","评价"]},"series":[{"data":[{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]},{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]}],"name":"作品数","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["第1位"," 31"]},{"value":["第2位"," 56"]},{"value":["第3位","186"]},{"value":["第4位"," 13"]},{"value":["第5位","144"]},{"value":["第6位"," 62"]},{"value":["第7位"," 87"]},{"value":["第8位"," 78"]},{"value":["第9位","  3"]},{"value":["第10位","100"]},{"value":["第1位"," 86"]},{"value":["第2位"," 97"]},{"value":["第3位","172"]},{"value":["第4位"," 96"]},{"value":["第5位","138"]},{"value":["第6位"," 32"]},{"value":["第7位","190"]},{"value":["第8位","147"]},{"value":["第9位"," 43"]},{"value":["第10位"," 27"]}],"name":"评价","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="调整y轴坐标等参数" class="section level2">
+<h2>调整y轴坐标等参数</h2>
+<pre class="r"><code>e_charts(data1, 作家) |&gt; # 横轴
+  e_bar(作品数) |&gt;# 纵轴
+  e_bar(评价)|&gt; # 纵轴 
+  e_y_axis(
+  min = 0, # 最小值
+max = 200, # 最大值
+interval = 50, # 显示间隔
+name = &quot;Y轴&quot;, # 坐标轴名称
+formatter = &quot;{value} 篇&quot;
+) # 坐标轴标签的格式化文本</code></pre>
+<div id="htmlwidget-2" style="width:100%;height:500px;" class="echarts4r html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true,"min":0,"max":200,"interval":50,"name":"Y轴","axisLabel":{"formatter":"{value} 篇"}}],"xAxis":[{"data":["第1位","第2位","第3位","第4位","第5位","第6位","第7位","第8位","第9位","第10位"],"type":"category","boundaryGap":true}],"legend":{"data":["作品数","评价"]},"series":[{"data":[{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]},{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]}],"name":"作品数","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["第1位"," 31"]},{"value":["第2位"," 56"]},{"value":["第3位","186"]},{"value":["第4位"," 13"]},{"value":["第5位","144"]},{"value":["第6位"," 62"]},{"value":["第7位"," 87"]},{"value":["第8位"," 78"]},{"value":["第9位","  3"]},{"value":["第10位","100"]},{"value":["第1位"," 86"]},{"value":["第2位"," 97"]},{"value":["第3位","172"]},{"value":["第4位"," 96"]},{"value":["第5位","138"]},{"value":["第6位"," 32"]},{"value":["第7位","190"]},{"value":["第8位","147"]},{"value":["第9位"," 43"]},{"value":["第10位"," 27"]}],"name":"评价","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="双y轴有时候我们的变量差距太大怎么办" class="section level1">
+<h1>双y轴(有时候我们的变量差距太大怎么办)</h1>
+<div id="修改y_index为0-或者1" class="section level2">
+<h2>修改y_index为0 或者1</h2>
+<pre class="r"><code>data1 |&gt;
+  e_charts(作家) |&gt; # 横轴
+  e_bar(作品数, y_index = 0) |&gt; # 指定主轴变量
+  e_bar(评价, y_index = 1) |&gt; # 指定副轴变量
+  e_y_axis(
+    y_index = 0, # 修改主Y轴属性
+    min = 0,
+    max = 100,
+    interval = 20,
+    name = &quot;主Y轴&quot;,
+    formatter = &quot;{value} 本&quot;
+  ) |&gt;
+  e_y_axis(
+    index = 1, # 修改副Y轴属性
+    min = 0,
+    max = 200,
+    interval = 20,
+    name = &quot;副Y轴&quot;,
+    formatter = &quot;{value}个&quot;
+  )</code></pre>
+<div id="htmlwidget-3" style="width:100%;height:500px;" class="echarts4r html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true,"y_index":0,"min":0,"max":100,"interval":20,"name":"主Y轴","axisLabel":{"formatter":"{value} 本"}},{"type":"value","min":0,"max":200,"interval":20,"name":"副Y轴","axisLabel":{"formatter":"{value}个"}}],"xAxis":[{"data":["第1位","第2位","第3位","第4位","第5位","第6位","第7位","第8位","第9位","第10位"],"type":"category","boundaryGap":true}],"legend":{"data":["作品数","评价"]},"series":[{"data":[{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]},{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]}],"name":"作品数","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d"},{"data":[{"value":["第1位"," 31"]},{"value":["第2位"," 56"]},{"value":["第3位","186"]},{"value":["第4位"," 13"]},{"value":["第5位","144"]},{"value":["第6位"," 62"]},{"value":["第7位"," 87"]},{"value":["第8位"," 78"]},{"value":["第9位","  3"]},{"value":["第10位","100"]},{"value":["第1位"," 86"]},{"value":["第2位"," 97"]},{"value":["第3位","172"]},{"value":["第4位"," 96"]},{"value":["第5位","138"]},{"value":["第6位"," 32"]},{"value":["第7位","190"]},{"value":["第8位","147"]},{"value":["第9位"," 43"]},{"value":["第10位"," 27"]}],"name":"评价","type":"bar","yAxisIndex":1,"xAxisIndex":0,"coordinateSystem":"cartesian2d"}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="堆积图" class="section level1">
+<h1>堆积图</h1>
+<pre class="r"><code>data1 |&gt;
+  e_charts(作家) |&gt;
+  e_bar(作品数, stack = &quot;group1&quot;) |&gt; # 堆第一堆
+  e_bar(评价, stack = &quot;group1&quot;)  # 堆第一堆</code></pre>
+<div id="htmlwidget-4" style="width:100%;height:500px;" class="echarts4r html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4">{"x":{"theme":"","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["第1位","第2位","第3位","第4位","第5位","第6位","第7位","第8位","第9位","第10位"],"type":"category","boundaryGap":true}],"legend":{"data":["作品数","评价"]},"series":[{"data":[{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]},{"value":["第1位","56"]},{"value":["第2位","62"]},{"value":["第3位","92"]},{"value":["第4位","59"]},{"value":["第5位","31"]},{"value":["第6位","56"]},{"value":["第7位","62"]},{"value":["第8位","92"]},{"value":["第9位","59"]},{"value":["第10位","31"]}],"name":"作品数","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"group1"},{"data":[{"value":["第1位"," 31"]},{"value":["第2位"," 56"]},{"value":["第3位","186"]},{"value":["第4位"," 13"]},{"value":["第5位","144"]},{"value":["第6位"," 62"]},{"value":["第7位"," 87"]},{"value":["第8位"," 78"]},{"value":["第9位","  3"]},{"value":["第10位","100"]},{"value":["第1位"," 86"]},{"value":["第2位"," 97"]},{"value":["第3位","172"]},{"value":["第4位"," 96"]},{"value":["第5位","138"]},{"value":["第6位"," 32"]},{"value":["第7位","190"]},{"value":["第8位","147"]},{"value":["第9位"," 43"]},{"value":["第10位"," 27"]}],"name":"评价","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"group1"}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+</div>

@@ -26,6 +26,9 @@ menu:
     - name: Publication
       url: https://kns.cnki.net/kcms/detail/knetsearch.aspx?dbcode=CJFD&code=000044219366&sfield=au&skey=%e7%8e%8b%e5%ad%90%e7%9d%bf&uniplatform=NZKPT
       weight: 5
+    - name: 画图
+      url: /画图
+      weight: 3
     - name: "Categories"
       url: "/categories/"
       weight: 3
